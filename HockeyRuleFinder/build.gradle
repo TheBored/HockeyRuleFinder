@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'http://download.crashlytics.com/maven' }
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.9.+'
+        classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.9.+'
+        classpath 'com.crashlytics.tools.gradle:crashlytics-gradle:1.+'
+
+    }
+}
+
+apply plugin: 'android-sdk-manager'
+apply plugin: 'android'
+apply plugin: 'crashlytics'
+repositories {
+    maven { url 'http://download.crashlytics.com/maven' }
+}
+
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.3"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 19
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            runProguard true
+            debuggable false
+            proguardFile getDefaultProguardFile('proguard-android.txt')
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:+'
+    compile 'com.android.support:support-v4:+'
+    compile 'com.crashlytics.android:crashlytics:1.+'
+
+}
+

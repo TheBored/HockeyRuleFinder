@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ruleDetailRow"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="4dp" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="?attr/textSizeRuleTitle"
+        android:text="@string/placeholder_rule_id_plain"
+        android:id="@+id/ruleNumberView"
+        android:singleLine="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:minWidth="5dp"
+        android:textIsSelectable="true"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="?attr/textSizeRuleTitle"
+        android:text="@string/placeholder_rule_title"
+        android:id="@+id/ruleTitleView"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/ruleNumberView"
+        android:textIsSelectable="true"
+        android:paddingBottom="4dp"
+        android:textColor="?attr/textColorMain" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/ruleTitleView"
+        android:layout_alignLeft="@+id/ruleTitleView"
+        android:orientation="vertical"
+        android:id="@+id/ruleDetailLinearLayout">
+        </LinearLayout>
+
+</RelativeLayout>

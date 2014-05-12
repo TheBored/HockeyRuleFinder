@@ -1,0 +1,249 @@
+<?xml version="1.0" ?>
+<!--suppress CheckTagEmptyBody -->
+<calls leagueid="1">
+	<call>
+		<id>29.1</id>
+		<name>Boarding</name>
+		<desc>Striking the clenched fist of one hand into the open palm of the opposite hand in front of the chest.</desc>
+		<img>img_boarding</img>
+		<assocRule>41</assocRule>
+	</call>
+	<call>
+		<id>29.2</id>
+		<name>Buttending</name>
+		<desc>Moving the forearm, fist closed, under the forearm of the other hand held palm down.</desc>
+		<img>img_buttending</img>
+		<assocRule>58</assocRule>
+	</call>
+	<call>
+		<id>29.3</id>
+		<name>Charging</name>
+		<desc>Rotating clenched fists around one another in front of the chest.</desc>
+		<img>img_charging</img>
+		<assocRule>42</assocRule>
+	</call>
+	<call>
+		<id>29.4</id>
+		<name>Checking from behind</name>
+		<desc>A forward motion of both arms, with the palms of the hands open and facing away from the body, fully extended from the chest at shoulder level.</desc>
+		<img>img_checkingfrombehind</img>
+		<assocRule>43</assocRule>
+	</call>
+	<call>
+		<id>29.5</id>
+		<name>Clipping</name>
+		<desc>Striking leg with either hand behind the knee, keeping both skates on the ice.</desc>
+		<img>img_clipping</img>
+		<assocRule>44</assocRule>
+	</call>
+	<call>
+		<id>29.6</id>
+		<name>Cross-checking</name>
+		<desc>A forward and backward motion of the arms with both fists clenched, extending from the chest for a distance of about one foot.</desc>
+		<img>img_crosschecking</img>
+		<assocRule>59</assocRule>
+	</call>
+	<call>
+		<id>29.7</id>
+		<name>Delayed off-sides</name>
+		<desc>Non-whistle arm fully extended above the head. To nullify a delayed off-side, the Linesman shall drop the arm to the side.</desc>
+		<img>img_delayedoffsides</img>
+		<assocRule>83</assocRule>
+	</call>
+	<call>
+		<id>29.8</id>
+		<name>Delayed penalty</name>
+		<desc>Extending the non-whistle arm fully above the head.</desc>
+		<img>img_delayedpenalty</img>
+		<assocRule>26</assocRule>
+	</call>
+	<call>
+		<id>29.9</id>
+		<name>Delaying the game</name>
+		<desc>The non-whistle hand, palm open, is placed across the chest and then fully extended directly in front of the body.</desc>
+		<img>img_delayingthegame</img>
+		<assocRule>63</assocRule>
+	</call>
+	<call>
+		<id>29.10</id>
+		<name>Elbowing</name>
+		<desc>Tapping either elbow with the opposite hand.</desc>
+		<img>img_elbowing</img>
+		<assocRule>45</assocRule>
+	</call>
+	<call>
+		<id>29.11</id>
+		<name>Goal scored</name>
+		<desc>A single point directed at the goal in which the puck legally entered.</desc>
+		<img>img_goalscored</img>
+		<assocRule>78</assocRule>
+	</call>
+	<call>
+		<id>29.12</id>
+		<name>Hand pass</name>
+		<desc>With the palm open and facing forward, a pushing motion towards the front of the body once or twice to indicate the puck was moved ahead with the hand.</desc>
+		<img>img_handpass</img>
+		<assocRule>79</assocRule>
+	</call>
+	<call>
+		<id>29.13</id>
+		<name>Head-butting</name>
+		<desc>No signal in the National Hockey League. </desc>
+		<img>img_nosignal</img>
+		<assocRule>47</assocRule>
+	</call>
+	<call>
+		<id>29.14</id>
+		<name>High-sticking</name>
+		<desc>Holding both fists clenched, one slightly above the other (as if holding a stick) at the height of the forehead.</desc>
+		<img>img_highsticking</img>
+		<assocRule>60</assocRule>
+	</call>
+	<call>
+		<id>29.15</id>
+		<name>Holding</name>
+		<desc>Clasping either wrist with the other hand in front of the chest.</desc>
+		<img>img_holding</img>
+		<assocRule>54</assocRule>
+	</call>
+	<call>
+		<id>29.16</id>
+		<name>Holding the stick</name>
+		<desc>Two stage signal involving the holding signal (29.15) followed by a signal indicating you are holding onto a stick with two hands in a normal manner.</desc>
+		<img>img_holdingthestick</img>
+		<assocRule>54</assocRule>
+	</call>
+	<call>
+		<id>29.17</id>
+		<name>Hooking</name>
+		<desc>A tugging motion with both arms as if pulling something from in front toward the stomach.</desc>
+		<img>img_hooking</img>
+		<assocRule>55</assocRule>
+	</call>
+	<call>
+		<id>29.18a</id>
+		<name>Icing(a)</name>
+		<desc>The back Linesman signals a possible icing by fully extending either arm over his head. The arm should remain raised until the front Linesman either blows the whistle to indicate an icing or until the icing is washed out.</desc>
+		<img>img_icing_a</img>
+		<assocRule>81</assocRule>
+	</call>
+	<call>
+		<id>29.18b</id>
+		<name>Icing(b)</name>
+		<desc>Once the icing has been completed, the back Linesman will then point to the appropriate face-off spot and skate to it, turning backwards somewhere near the blue line and crossing his arms across his chest to indicate icing.</desc>
+		<img>img_icing_b</img>
+		<assocRule>81</assocRule>
+	</call>
+	<call>
+		<id>29.19</id>
+		<name>Illegal check to the head</name>
+		<desc>Patting flat (open palm) of the non-whistle hand on this side of the head.</desc>
+		<img>img_illegalchecktothehead</img>
+		<assocRule>48</assocRule>
+	</call>
+	<call>
+		<id>29.20</id>
+		<name>Interference</name>
+		<desc>Crossing arms stationary in front of the chest in an “X” formation.</desc>
+		<img>img_interference</img>
+		<assocRule>56</assocRule>
+	</call>
+	<call>
+		<id>29.21</id>
+		<name>Kicking</name>
+		<desc>No signal in the National Hockey League.</desc>
+		<img>img_nosignal</img>
+		<assocRule>49</assocRule>
+	</call>
+	<call>
+		<id>29.22</id>
+		<name>Kneeing</name>
+		<desc>Slapping either knee with the palm of the hand, while keeping both skates on the ice.</desc>
+		<img>img_kneeing</img>
+		<assocRule>50</assocRule>
+	</call>
+	<call>
+		<id>29.23</id>
+		<name>Match penalty</name>
+		<desc>No signal in the National Hockey League.</desc>
+		<img>img_nosignal</img>
+		<assocRule>21</assocRule>
+	</call>
+	<call>
+		<id>29.24</id>
+		<name>Misconduct</name>
+		<desc>Both hands on hips.</desc>
+		<img>img_misconduct</img>
+		<assocRule>22</assocRule>
+	</call>
+	<call>
+		<id>29.25</id>
+		<name>Penalty shot</name>
+		<desc>Non-whistle arm fully extended pointing to the center ice face-off spot.</desc>
+		<img>img_penaltyshot</img>
+		<assocRule>4</assocRule>
+	</call>
+	<call>
+		<id>29.26</id>
+		<name>Roughing</name>
+		<desc>Fist clenched and arm extended out to the side of the body.</desc>
+		<img>img_roughing</img>
+		<assocRule>51</assocRule>
+	</call>
+	<call>
+		<id>29.27</id>
+		<name>Slashing</name>
+		<desc>A chopping motion with the edge of one hand across the opposite forearm.</desc>
+		<img>img_slashing</img>
+		<assocRule>61</assocRule>
+	</call>
+	<call>
+		<id>29.28</id>
+		<name>Spearing</name>
+		<desc>Jabbing motion with both hands thrust out immediately in front of the body and then hands dropped to the side of the body (essentially the opposite to the hooking signal – away from the body rather than towards the body).</desc>
+		<img>img_spearing</img>
+		<assocRule>62</assocRule>
+	</call>
+	<call>
+		<id>29.29</id>
+		<name>Throwing equipment</name>
+		<desc>No signal in the National Hockey League.</desc>
+		<img>img_nosignal</img>
+		<assocRule>53</assocRule>
+	</call>
+	<call>
+		<id>29.30</id>
+		<name>Timeout</name>
+		<desc>Using both hands to form a “T” in front of the chest.</desc>
+		<img>img_timeout</img>
+		<assocRule>87</assocRule>
+	</call>
+	<call>
+		<id>29.31</id>
+		<name>Too many men on the ice</name>
+		<desc>No signal in the National Hockey League.</desc>
+		<img>img_nosignal</img>
+		<assocRule>74</assocRule>
+	</call>
+	<call>
+		<id>29.32</id>
+		<name>Tripping</name>
+		<desc>Striking leg with either hand below the knee, keeping both skates on the ice.</desc>
+		<img>img_tripping</img>
+		<assocRule>57</assocRule>
+	</call>
+	<call>
+		<id>29.33</id>
+		<name>Unsportsmanlike conduct</name>
+		<desc>Using both hands to form a “T” in front of the chest (same as time-out).</desc>
+		<img>img_unsportsmanlikeconduct</img>
+		<assocRule>75</assocRule>
+	</call>
+	<call>
+		<id>29.34</id>
+		<name>Washout</name>
+		<desc>A sweeping sideways motion of both arms across the front of the body at shoulder level with palms down. This signal is used by Referees to signal no goal; by the Linesmen to signal no icing and no off-side; and by all Officials to wash out a hand pass or a high-sticking the puck violation.</desc>
+		<img>img_washout</img>
+		<assocRule></assocRule>
+	</call>
+</calls>

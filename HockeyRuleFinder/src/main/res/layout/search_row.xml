@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/searchRow"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="16dp">
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/placeholder_rule_id_plain"
+        android:id="@+id/ruleNumberView"
+        android:singleLine="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:minWidth="5dp" />
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="16dp"
+        android:orientation="vertical"
+        android:layout_toRightOf="@+id/ruleNumberView">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeholder_section_title"
+            android:id="@+id/ruleSectionView"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/placeholder_rule_title"
+            android:id="@+id/ruleTitleView"
+            android:textColor="?attr/textColorMain" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/placeholder_rule_text"
+            android:id="@+id/ruleTextView"
+            android:clickable="false"
+            android:maxLines="15" />
+    </LinearLayout>
+</RelativeLayout>

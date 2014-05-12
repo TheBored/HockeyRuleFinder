@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="actionBarBGDark">#222222</color>
+    <color name="actionBarAccentDark">#1B1B1B</color>
+
+    <color name="darkListRowColor">#2D2D2D</color>
+    <color name="darkListRowDivider">#383838</color>
+
+    <color name="lightListRowColor">#F4F4F4</color>
+    <color name="lightListRowDivider">#D7D7D7</color>
+
+</resources>

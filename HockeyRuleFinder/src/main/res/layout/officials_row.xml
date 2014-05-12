@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/officialsRow"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:paddingLeft="16dp">
+
+    <TextView
+        android:id="@+id/officialsJerseyNumber"
+        android:layout_width="36dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/placeholder_official_number"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/officialsName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/placeholder_official_name"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/officialsJerseyNumber"/>
+</RelativeLayout>

@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/searchFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    android:background="?attr/listRowBGColor">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtSearch"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:inputType="text"
+        android:hint="@string/search_hint"/>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchListView"
+        android:layout_below="@+id/txtSearch"
+        android:divider="?attr/listRowDividerColor"
+        android:dividerHeight="1dp"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/search_zero_results"
+        android:id="@+id/searchErrorText"
+        android:singleLine="true"
+        android:layout_marginTop="225dp"
+        android:gravity="center"
+        android:textSize="30dp" />
+
+</RelativeLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/quickReferenceRow"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="100dp"
+    android:descendantFocusability="blocksDescendants"
+    android:weightSum="4"
+    android:baselineAligned="false" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingTop="2dp"
+        android:paddingBottom="8dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/placeholder_rule_title"
+            android:id="@+id/qrNameTextView"
+            android:gravity="top"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/placeholder_quickref_desc"
+            android:id="@+id/qrDescTextView"
+            android:gravity="top"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:layout_below="@+id/qrNameTextView" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="3">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/qrImageBtn"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:layout_margin="0dp"
+            android:background="?attr/listRowShadow"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/content_desc_quickref_image" />
+
+        <ImageButton
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:id="@+id/qrImageZoom"
+            android:background="@drawable/img_magnify"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:clickable="false"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="3dp"
+            android:contentDescription="@string/content_desc_magnify" />
+    </RelativeLayout>
+</LinearLayout>

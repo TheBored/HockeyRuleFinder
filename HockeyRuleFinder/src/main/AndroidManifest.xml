@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.teebz.hrf"
+    android:versionCode="1"
+    android:versionName="1.0.90" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/HRFDarkTheme" >
+        <activity
+            android:name="com.teebz.hrf.activities.MainActivity"
+            android:label="Hockey Rules" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.teebz.hrf.activities.RuleDetailActivity"
+            android:label="@string/title_activity_rule_detail"
+            android:parentActivityName="com.teebz.hrf.activities.RuleListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teebz.hrf.activities.RuleListActivity" />
+
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <data android:scheme="com.teebz.hrf" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.teebz.hrf.activities.RuleListActivity"
+            android:label="@string/title_activity_rule_list"
+            android:parentActivityName="com.teebz.hrf.activities.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teebz.hrf.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.teebz.hrf.activities.SingleImageActivity"
+            android:label="@string/title_activity_single_image" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teebz.hrf.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.teebz.hrf.activities.SingleOfficialActivity"
+            android:label="@string/title_activity_single_official" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teebz.hrf.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.teebz.hrf.activities.QuickReferenceActivity"
+            android:label="@string/title_activity_quick_reference" >
+        </activity>
+        <activity
+            android:name="com.teebz.hrf.activities.HRFActivity"
+            android:label="@string/title_activity_hrf" >
+        </activity>
+
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="059489b56b789ddbe5328037bf1b1e86e0e7b423" />
+
+        <activity
+            android:name="com.teebz.hrf.activities.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="com.teebz.hrf.activities.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+        </activity>
+    </application>
+
+</manifest>
