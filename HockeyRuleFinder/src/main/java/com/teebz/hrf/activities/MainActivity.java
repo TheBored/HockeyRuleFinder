@@ -66,7 +66,7 @@ public class MainActivity extends HRFActivity
         Crashlytics.start(this);
 
 
-        String mSelectedOption = getString(R.string.title_section0);
+        String mSelectedOption = getString(R.string.title_section1);
         if (savedInstanceState != null) {
             String searchText = savedInstanceState.getString(SEARCH_LAST_TEXT);
             mSearchFragment = SearchFragment.newInstance(searchText);

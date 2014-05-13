@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
-    android:paddingTop="0dp"
-    android:paddingBottom="0dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
     android:background="?attr/listRowBGColor">
 
     <!--ListView
@@ -22,6 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listViewMain"
-        card:card_layout_resourceID="@layout/slim_card_row" />
+        card:list_card_layout_resourceID="@layout/slim_card_row" />
 
 </RelativeLayout>

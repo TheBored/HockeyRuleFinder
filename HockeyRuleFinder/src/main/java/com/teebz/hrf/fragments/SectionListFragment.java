@@ -1,6 +1,7 @@
 package com.teebz.hrf.fragments;
 
 import com.teebz.hrf.R;
+import com.teebz.hrf.cards.SlimCardHeader;
 import com.teebz.hrf.entities.Rule;
 import com.teebz.hrf.entities.Section;
 import com.teebz.hrf.listeners.SectionListItemClickListener;
@@ -24,7 +25,6 @@ import java.util.List;
 
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
-import it.gmariotti.cardslib.library.internal.CardHeader;
 import it.gmariotti.cardslib.library.view.CardListView;
 
 public class SectionListFragment extends android.app.Fragment {
@@ -63,7 +63,7 @@ public class SectionListFragment extends android.app.Fragment {
         for (int i = 0; i < mSections.size(); i++) {
             Card card = new Card(getActivity().getBaseContext());
 
-            CardHeader header = new CardHeader(getActivity().getBaseContext());
+            SlimCardHeader header = new SlimCardHeader(getActivity().getBaseContext());
             header.setTitle(mSections.get(i).name);
             card.addCardHeader(header);
 
