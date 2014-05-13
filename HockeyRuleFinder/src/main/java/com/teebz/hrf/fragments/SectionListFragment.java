@@ -19,10 +19,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import it.gmariotti.cardslib.library.internal.Card;
+import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
+import it.gmariotti.cardslib.library.internal.CardHeader;
+import it.gmariotti.cardslib.library.view.CardListView;
 
 public class SectionListFragment extends android.app.Fragment {
     private List<Section> mSections;
+    private ArrayList<Card> mSectionCards;
     private SectionListItemClickListener mItemClickListener;
 
     public static SectionListFragment newInstance() {
@@ -40,8 +47,36 @@ public class SectionListFragment extends android.app.Fragment {
         catch (Exception e) {
             Toast.makeText(activity.getBaseContext(), "Click listener failed", Toast.LENGTH_LONG).show();
         }
+
+        //Get all relevant sections from the rulebook.
         RuleSearcher searcher = RuleSearcher.getSearcher(getActivity().getAssets());
         mSections = searcher.getSections();
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        //Before we display everything, set up all of the cards.
+        mSectionCards = new ArrayList<Card>();
+
+        for (int i = 0; i < mSections.size(); i++) {
+            Card card = new Card(getActivity().getBaseContext());
+
+            CardHeader header = new CardHeader(getActivity().getBaseContext());
+            header.setTitle(mSections.get(i).name);
+            card.addCardHeader(header);
+
+            mSectionCards.add(card);
+        }
+
+
+        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(),mSectionCards);
+
+        CardListView listView = (CardListView)getActivity().findViewById(R.id.listViewMain);
+        if (listView!=null){
+            listView.setAdapter(mCardArrayAdapter);
+        }
     }
 
     @Override
@@ -63,12 +98,16 @@ public class SectionListFragment extends android.app.Fragment {
     }
 
     private void populateListView(View theView) {
+
+
+
+        /*
         //Now that we have the sections, go ahead and set the list adapter.
         if (mSections != null) {
             ArrayAdapter<Section> adapter = new SectionListAdapter();
             ListView list = (ListView) theView.findViewById(R.id.listViewMain);
             list.setAdapter(adapter);
-        }
+        } */
     }
 
     private void registerClickCallback(View theView) {
