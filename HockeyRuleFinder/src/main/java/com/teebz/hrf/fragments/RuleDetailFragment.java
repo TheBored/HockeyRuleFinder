@@ -3,9 +3,12 @@ package com.teebz.hrf.fragments;
 import com.teebz.hrf.Helpers;
 import com.teebz.hrf.R;
 import com.teebz.hrf.activities.SingleImageActivity;
+import com.teebz.hrf.cards.RuleDetailCard;
 import com.teebz.hrf.entities.Rule;
 import com.teebz.hrf.searchparsers.RuleSearcher;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -20,15 +23,22 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import it.gmariotti.cardslib.library.internal.Card;
+import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
+import it.gmariotti.cardslib.library.internal.CardHeader;
+import it.gmariotti.cardslib.library.view.CardListView;
 
 public class RuleDetailFragment extends android.app.Fragment {
     public static final String RULES_DETAIL_KEY = "RULES_DETAIL_KEY";
     public static final String RULES_DETAIL_SEARCH_TERM = "RULES_DETAIL_SEARCH_TERM";
 
     private Rule mRule;
-    private ListView mDetailList;
+    private CardListView mDetailList;
+    private ArrayList<Card> mCardList;
     private String mHighlightText;
     private String mRuleTarget;
 
@@ -45,15 +55,33 @@ public class RuleDetailFragment extends android.app.Fragment {
     }
 
     private void populateListView() {
-        if (mRule != null) {
-            ArrayAdapter<Rule> adapter = new RuleDetailAdapter();
-            mDetailList.setAdapter(adapter);
+        buildCards();
+        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(), mCardList);
+
+        if (mDetailList!=null){
+            mDetailList.setAdapter(mCardArrayAdapter);
         }
     }
 
-    public void refreshRules(Rule rule) {
-        this.mRule = rule;
-        populateListView();
+    private void buildCards() {
+        Activity activity = getActivity();
+        if (activity != null) {
+            Context context = activity.getBaseContext();
+            if (context != null) {
+                mCardList = new ArrayList<Card>();
+
+                for(Rule r : mRule.subRules) {
+                    RuleDetailCard card = new RuleDetailCard(context, r);
+
+                    CardHeader header = new CardHeader(context);
+                    header.setTitle(r.name);
+
+                    card.addCardHeader(header);
+                    card.setTitle("TEST");
+                    mCardList.add(card);
+                }
+            }
+        }
     }
 
     @Override
@@ -68,9 +96,11 @@ public class RuleDetailFragment extends android.app.Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.rule_detail_fragment, container, false);
 
-        mDetailList = (ListView)rootView.findViewById(R.id.ruleDetailList);
+        mDetailList = (CardListView)rootView.findViewById(R.id.ruleDetailCardList);
         populateListView();
 
+        //BRIAN ADD THIS BACK IN
+        /*
         //If we have a rule target, we want the list to auto scroll to that rule specifically.
         if (mRuleTarget != null) {
             for (int i = 0; i < mRule.subRules.size(); i++) {
@@ -79,7 +109,7 @@ public class RuleDetailFragment extends android.app.Fragment {
                 }
             }
         }
-
+        */
         return rootView;
     }
 
