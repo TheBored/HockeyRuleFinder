@@ -9,5 +9,6 @@
     android:clickable="true"
     android:textIsSelectable="true"
     android:paddingRight="16dp"
-    android:singleLine="false" >
+    android:singleLine="false"
+    android:fontFamily="sans-serif-light">
 </TextView>

@@ -29,7 +29,6 @@ import java.util.ArrayList;
 
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
-import it.gmariotti.cardslib.library.internal.CardHeader;
 import it.gmariotti.cardslib.library.view.CardListView;
 
 public class RuleDetailFragment extends android.app.Fragment {
@@ -71,13 +70,8 @@ public class RuleDetailFragment extends android.app.Fragment {
                 mCardList = new ArrayList<Card>();
 
                 for(Rule r : mRule.subRules) {
-                    RuleDetailCard card = new RuleDetailCard(context, r);
-
-                    CardHeader header = new CardHeader(context);
-                    header.setTitle(r.name);
-
-                    card.addCardHeader(header);
-                    card.setTitle("TEST");
+                    RuleDetailCard card = new RuleDetailCard(context);
+                    card.setDetails(r, mHighlightText);
                     mCardList.add(card);
                 }
             }
