@@ -16,7 +16,8 @@
         android:layout_height="match_parent"
         android:id="@+id/ruleDetailCardList"
         android:paddingTop="8dp"
-        card:list_card_layout_resourceID="@layout/rule_detail_card_view" />
+        card:list_card_layout_resourceID="@layout/rule_detail_card_view"
+        android:background="?attr/cardBGColor"/>
 
 
 </RelativeLayout>

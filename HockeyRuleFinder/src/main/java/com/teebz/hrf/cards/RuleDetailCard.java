@@ -6,7 +6,6 @@ import com.teebz.hrf.activities.SingleImageActivity;
 import com.teebz.hrf.entities.Rule;
 import com.teebz.hrf.searchparsers.RuleSearcher;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -27,6 +26,7 @@ import it.gmariotti.cardslib.library.internal.Card;
 
 public class RuleDetailCard extends Card {
 
+    private Context mContext;
     private Rule mRule;
     private String mHighlightText;
 
@@ -36,6 +36,7 @@ public class RuleDetailCard extends Card {
 
     public RuleDetailCard(Context context, int innerLayout) {
         super(context, innerLayout);
+        mContext = context;
         init();
     }
 
@@ -147,14 +148,12 @@ public class RuleDetailCard extends Card {
     }
 
     private void showLargeImage(String imgName) {
-        Activity activity = (Activity)getContext();
-
         //If this is copied again, move it to a shared location w/the other usage.
-        Intent newActivity = new Intent(activity, SingleImageActivity.class);
+        Intent newActivity = new Intent(mContext, SingleImageActivity.class);
+        newActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         newActivity.putExtra(SingleImageActivity.SINGLE_IMAGE_KEY, imgName);
         newActivity.putExtra(SingleImageActivity.SINGLE_IMAGE_TITLE, "Diagram Detail View");
         newActivity.putExtra(SingleImageActivity.SINGLE_IMAGE_FOLDER, Helpers.DIAGRAM_IMGS_FOLDER);
-
-        activity.startActivity(newActivity);
+        mContext.startActivity(newActivity);
     }
 }

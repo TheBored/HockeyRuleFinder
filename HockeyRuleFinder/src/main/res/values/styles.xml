@@ -1,4 +1,7 @@
 <resources>
+    <attr name="cardBGColor" format="reference"/>
+    <attr name="cardFGColor" format="reference"/>
+
     <attr name="listRowBGColor" format="reference"/>
     <attr name="listRowDividerColor" format="reference"/>
     <attr name="listRowShadow" format="reference" />
@@ -12,6 +15,8 @@
     <!-- Base application theme. -->
     <style name="HRFDarkTheme" parent="android:Theme.Holo">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="cardBGColor">@color/darkCardBGColor</item>
+        <item name="cardFGColor">@color/darkCardFGColor</item>
         <item name="listRowBGColor">@color/darkListRowColor</item>
         <item name="listRowDividerColor">@color/darkListRowDivider</item>
         <item name="listRowShadow">@drawable/image_shadow_dark</item>
@@ -29,6 +34,8 @@
 
     <!-- Optional light application theme. -->
     <style name="HRFLightTheme" parent="android:Theme.Holo.Light">
+        <item name="cardBGColor">@color/lightCardBGColor</item>
+        <item name="cardFGColor">@color/lightCardFGColor</item>
         <item name="listRowBGColor">@color/lightListRowColor</item>
         <item name="listRowDividerColor">@color/lightListRowDivider</item>
         <item name="listRowShadow">@drawable/image_shadow_light</item>

@@ -10,5 +10,6 @@
     android:textIsSelectable="true"
     android:paddingRight="16dp"
     android:singleLine="false"
-    android:fontFamily="sans-serif-light">
+    android:fontFamily="sans-serif-light"
+    android:textColor="?android:textColorPrimary">
 </TextView>

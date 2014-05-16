@@ -9,4 +9,9 @@
     <color name="lightListRowColor">#F4F4F4</color>
     <color name="lightListRowDivider">#D7D7D7</color>
 
+    <color name="darkCardBGColor">#2A2A2A</color>
+    <color name="darkCardFGColor">#1A1A1A</color>
+
+    <color name="lightCardBGColor">#EDEDED</color>
+    <color name="lightCardFGColor">#FFFFFF</color>
 </resources>

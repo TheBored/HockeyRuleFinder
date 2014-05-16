@@ -4,7 +4,9 @@
     android:id="@+id/ruleDetailRow"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="4dp">
+    android:paddingTop="4dp"
+    android:minHeight="98dp"
+    android:background="?attr/cardFGColor">
 
     <TextView
         android:layout_width="wrap_content"
