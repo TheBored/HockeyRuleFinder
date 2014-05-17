@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:background="?attr/cardFGColor">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/officialGridCardNumber"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/officialImageView"
+        android:paddingTop="4dp"
+        android:contentDescription="@string/content_desc_official_image"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/officialGridCardNumber">
+    </ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/officialGridCardName"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/officialImageView"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
