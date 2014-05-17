@@ -37,7 +37,7 @@ public class RuleDetailCard extends Card {
     public RuleDetailCard(Context context, int innerLayout) {
         super(context, innerLayout);
         mContext = context;
-        init();
+        //setClickListeners();
     }
 
     public void setDetails(Rule rule, String highlightText) {
@@ -45,7 +45,7 @@ public class RuleDetailCard extends Card {
         mHighlightText = highlightText;
     }
 
-    private void init(){
+    private void setClickListeners(){
         //Set a OnClickListener listener
         setOnClickListener(new OnCardClickListener() {
             @Override

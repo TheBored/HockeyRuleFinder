@@ -93,8 +93,6 @@ public class RuleDetailFragment extends android.app.Fragment {
         mDetailList = (CardListView)rootView.findViewById(R.id.ruleDetailCardList);
         populateListView();
 
-        //BRIAN ADD THIS BACK IN
-        /*
         //If we have a rule target, we want the list to auto scroll to that rule specifically.
         if (mRuleTarget != null) {
             for (int i = 0; i < mRule.subRules.size(); i++) {
@@ -103,7 +101,7 @@ public class RuleDetailFragment extends android.app.Fragment {
                 }
             }
         }
-        */
+
         return rootView;
     }
 
