@@ -5,51 +5,70 @@
     android:id="@+id/searchRow"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="16dp">
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:paddingBottom="0dp"
+    android:paddingTop="8dp">
 
     <TextView
-        android:layout_width="50dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/placeholder_rule_title"
+        android:id="@+id/ruleTitleView"
+        android:textColor="?attr/textColorMain"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/placeholder_rule_id_plain"
         android:id="@+id/ruleNumberView"
         android:singleLine="false"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:minWidth="5dp" />
+        android:layout_alignParentRight="true"
+        android:textSize="12sp"
+        android:textStyle="italic"/>
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingRight="16dp"
-        android:orientation="vertical"
-        android:layout_toRightOf="@+id/ruleNumberView">
+        android:text="@string/header_rule_id"
+        android:id="@+id/ruleNumberText"
+        android:singleLine="false"
+        android:layout_toLeftOf="@+id/ruleNumberView"
+        android:textSize="12sp"
+        android:textStyle="italic"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/placeholder_section_title"
-            android:id="@+id/ruleSectionView"
-            android:textSize="12sp"
-            android:textStyle="italic" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/placeholder_section_title"
+        android:id="@+id/ruleSectionView"
+        android:layout_below="@+id/ruleNumberView"
+        android:layout_alignParentRight="true"
+        android:textSize="12sp"
+        android:textStyle="italic" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/placeholder_rule_title"
-            android:id="@+id/ruleTitleView"
-            android:textColor="?attr/textColorMain" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/header_section"
+        android:id="@+id/ruleSectionText"
+        android:layout_toLeftOf="@+id/ruleSectionView"
+        android:layout_below="@+id/ruleNumberView"
+        android:textSize="12sp"
+        android:textStyle="italic" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/placeholder_rule_text"
-            android:id="@+id/ruleTextView"
-            android:clickable="false"
-            android:maxLines="15" />
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/placeholder_rule_text"
+        android:id="@+id/ruleTextView"
+        android:clickable="false"
+        android:maxLines="15"
+        android:layout_below="@+id/ruleSectionView"/>
+
 </RelativeLayout>

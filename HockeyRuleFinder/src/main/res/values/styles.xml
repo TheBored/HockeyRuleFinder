@@ -12,6 +12,9 @@
     <attr name="textSizeRuleTitle" format="dimension" />
     <attr name="textColorMain" format="reference" />
 
+    <attr name="simpleRectBG" format="reference" />
+    <attr name="listRowDivider" format="reference" />
+
     <!-- Base application theme. -->
     <style name="HRFDarkTheme" parent="android:Theme.Holo">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
@@ -26,6 +29,9 @@
         <item name="textSizeRowMainContent">20sp</item>
         <item name="textSizeRuleTitle">22sp</item>
         <item name="textColorMain">@android:color/white</item>
+
+        <item name="simpleRectBG">@drawable/simple_rect_dark</item>
+        <item name="listRowDivider">@drawable/padded_divider_dark</item>
     </style>
 
     <style name="MyActionBar" parent="@android:style/Widget.Holo.ActionBar">
@@ -45,6 +51,9 @@
         <item name="textSizeRowMainContent">20sp</item>
         <item name="textSizeRuleTitle">22sp</item>
         <item name="textColorMain">@android:color/primary_text_light</item>
+
+        <item name="simpleRectBG">@drawable/simple_rect_light</item>
+        <item name="listRowDivider">@drawable/padded_divider_light</item>
     </style>
 
 </resources>

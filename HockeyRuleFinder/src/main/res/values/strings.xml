@@ -50,6 +50,9 @@
     <string name="content_desc_quickref_image">An example official demonstrating the specific call for the penalty.</string>
     <string name="content_desc_magnify">A magnifying glass indicating that this image can be clicked to see additional detail.</string>
 
+    <string name="header_rule_id">Rule #</string>
+    <string name="header_section">Sec:  </string>
+
     <!--
         All the placeholders here. None of these will be displayed to the user,
         they are just for appearance sake in the preview window.
@@ -57,6 +60,7 @@
     <string name="placeholder_rule_title">Rule Title</string>
     <string name="placeholder_rule_text">Rule Text</string>
     <string name="placeholder_rule_id_plain">0.0</string>
+
     <string name="placeholder_rule_id_label">Rule 0.0</string>
 
     <string name="placeholder_section_title">Section Title</string>

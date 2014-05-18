@@ -101,7 +101,7 @@ public class SearchFragment extends android.app.Fragment {
                 InputMethodManager keyboard = (InputMethodManager) mEditTextBox.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 keyboard.showSoftInput(mEditTextBox, InputMethodManager.SHOW_IMPLICIT);
             }
-        }, 200);
+        }, 500);
 
         setHandlers(fragmentView);
 
