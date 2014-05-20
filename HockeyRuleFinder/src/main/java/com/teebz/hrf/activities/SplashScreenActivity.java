@@ -26,6 +26,7 @@ public class SplashScreenActivity extends HRFActivity {
                 // Close this out.
                 finish();
 
+                //Stop the standard "fly in" animation, switch to simple fade.
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         }, SPLASH_TIME_OUT);

@@ -16,5 +16,7 @@
         android:stretchMode="columnWidth"
         android:gravity="center"
         android:id="@+id/officialsGrid"
-        card:list_card_layout_resourceID="@layout/officials_list_card_view"/>
+        card:list_card_layout_resourceID="@layout/officials_list_card_view"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"/>
 </RelativeLayout>
