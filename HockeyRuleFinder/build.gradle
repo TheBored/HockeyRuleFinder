@@ -38,7 +38,7 @@ android {
             debuggable true
         }
         release {
-            runProguard true
+            runProguard false
             debuggable false
             proguardFile getDefaultProguardFile('proguard-android.txt')
         }
