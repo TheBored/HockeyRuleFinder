@@ -5,5 +5,7 @@
     android:id="@+id/list_cardId"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
     style="@style/grid_card"
     />

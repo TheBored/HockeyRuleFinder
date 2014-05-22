@@ -145,7 +145,11 @@ public class QuickReferenceFragment extends android.app.Fragment {
             quickRefImageBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    showLargeImage(view.getTag().toString());
+                    Call c = mCallSearcher.getCallByCallId(view.getTag().toString());
+                    Helpers.showLargeImage(getActivity(),
+                                           c.imgName,
+                                           c.name,
+                                           Helpers.CALL_IMGS_FOLDER);
                 }
             });
 

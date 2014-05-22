@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/officialContainer"
+    android:orientation="vertical"
+    android:background="?attr/cardFGColor">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/HRFTitle"
+        android:text="@string/placeholder_official_name"
+        android:id="@+id/officialNameTxt"
+        android:paddingTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/topRelLayout"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/header_jersey_number"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/headerJersey"
+                android:paddingTop="12dp"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:background="?attr/sliderBorderDrawable" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/HRFTitle"
+                android:text="@string/placeholder_official_number"
+                android:id="@+id/txtJersey"
+                android:paddingTop="0dp"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/header_league"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/headerLeague"
+                android:paddingTop="5dp"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:background="?attr/sliderBorderDrawable" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/HRFTitle"
+                android:text="@string/placeholder_official_league"
+                android:id="@+id/txtLeague"
+                android:paddingTop="0dp"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/header_member_since"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/headerMemberSince"
+                android:paddingTop="5dp"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:background="?attr/sliderBorderDrawable" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/HRFTitle"
+                android:text="@string/placeholder_official_member_since"
+                android:id="@+id/txtMemberSince"
+                android:paddingTop="0dp"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/header_reg_season_games"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/headerRegularSeasonGames"
+                android:paddingTop="25dp"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:background="?attr/sliderBorderDrawable"  />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/HRFTitle"
+                android:text="@string/placeholder_official_games"
+                android:id="@+id/txtRegularSeasonGames"
+                android:paddingTop="0dp"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp" />
+        </LinearLayout>
+
+        <ImageView  xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:id="@+id/officialImageView"
+            android:paddingTop="10dp"
+            android:contentDescription="@string/content_desc_official_image"
+            android:layout_weight="1">
+        </ImageView>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/header_first_reg_season"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/headerFirstRegularSeason"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:background="?attr/sliderBorderDrawable"  />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/HRFTitle"
+        android:text="@string/placeholder_official_season"
+        android:id="@+id/txtFirstRegularSeason"
+        android:paddingTop="0dp"
+        android:paddingLeft="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/header_first_reg_season_game"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/headerFirstRegularSeasonGame"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:background="?attr/sliderBorderDrawable"  />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/HRFTitle"
+        android:text="@string/placeholder_official_first_game"
+        android:id="@+id/txtFirstRegularSeasonGame"
+        android:paddingTop="0dp"
+        android:paddingLeft="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/header_playoff_games"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/headerPlayoffGames"
+        android:paddingTop="25dp"
+        android:paddingLeft="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:background="?attr/sliderBorderDrawable"  />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/HRFTitle"
+        android:text="@string/placeholder_official_games"
+        android:id="@+id/txtPlayoffGames"
+        android:paddingTop="0dp"
+        android:paddingLeft="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/header_first_playoff_season"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/headerFirstPlayoffSeason"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:background="?attr/sliderBorderDrawable"  />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/HRFTitle"
+        android:text="@string/placeholder_official_season"
+        android:id="@+id/txtFirstPlayoffSeason"
+        android:paddingTop="0dp"
+        android:paddingLeft="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/header_first_playoff_game"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/headerFirstPlayoffGame"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:background="?attr/sliderBorderDrawable"  />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/HRFTitle"
+        android:text="@string/placeholder_official_first_game"
+        android:id="@+id/txtFirstPlayoffGame"
+        android:paddingTop="0dp"
+        android:paddingLeft="5dp"
+        android:paddingBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp" />
+</LinearLayout>

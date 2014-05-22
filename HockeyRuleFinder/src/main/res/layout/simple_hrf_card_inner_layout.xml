@@ -10,14 +10,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="?attr/textSizeRuleTitle"
+        style="@style/HRFTitle"
         android:text="@string/placeholder_rule_title"
         android:id="@+id/ruleTitleView"
         android:layout_alignParentTop="true"
         android:textIsSelectable="true"
         android:paddingBottom="4dp"
-        android:textColor="?attr/textColorMain"
-        android:fontFamily="sans-serif-light"
         android:paddingLeft="8dp" />
 
     <LinearLayout

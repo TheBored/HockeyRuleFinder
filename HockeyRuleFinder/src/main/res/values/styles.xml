@@ -56,4 +56,10 @@
         <item name="listRowDivider">@drawable/padded_divider_light</item>
     </style>
 
+    <style name="HRFTitle">
+        <item name="android:textSize">?attr/textSizeRuleTitle</item>
+        <item name="android:textColor">?attr/textColorMain</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
 </resources>

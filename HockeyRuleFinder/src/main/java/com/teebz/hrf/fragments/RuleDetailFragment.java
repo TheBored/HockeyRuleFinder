@@ -3,6 +3,7 @@ package com.teebz.hrf.fragments;
 import com.teebz.hrf.R;
 import com.teebz.hrf.cards.RuleDetailCard;
 import com.teebz.hrf.entities.Rule;
+import com.teebz.hrf.searchparsers.RuleSearcher;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -35,6 +36,16 @@ public class RuleDetailFragment extends android.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //If we are coming back with a valid instance state, take that.
+        if (savedInstanceState != null) {
+            mHighlightText = savedInstanceState.getString("HighlightText");
+            mRuleTarget = savedInstanceState.getString("RuleTarget");
+            String ruleId = savedInstanceState.getString("RuleId");
+
+            RuleSearcher rs = RuleSearcher.getSearcher(getActivity().getAssets());
+            mRule = rs.getRuleById(ruleId);
+        }
         // retain this fragment
         setRetainInstance(true);
     }
@@ -57,6 +68,14 @@ public class RuleDetailFragment extends android.app.Fragment {
         }
 
         return rootView;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString("HighlightText", mHighlightText);
+        savedInstanceState.putString("RuleTarget", mRuleTarget);
+        savedInstanceState.putString("RuleId", mRule.id);
     }
 
     public void setData(Rule rule, String highlightText, String ruleTarget) {

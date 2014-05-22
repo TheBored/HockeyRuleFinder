@@ -1,5 +1,7 @@
 package com.teebz.hrf;
 
+import com.teebz.hrf.activities.SingleImageActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -36,5 +38,14 @@ public class Helpers {
         }
 
         return true;
+    }
+
+    public static void showLargeImage(Context context, String imgName, String title, String folder) {
+        Intent newActivity = new Intent(context, SingleImageActivity.class);
+        newActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        newActivity.putExtra(SingleImageActivity.SINGLE_IMAGE_KEY, imgName);
+        newActivity.putExtra(SingleImageActivity.SINGLE_IMAGE_TITLE, title);
+        newActivity.putExtra(SingleImageActivity.SINGLE_IMAGE_FOLDER, folder);
+        context.startActivity(newActivity);
     }
 }

@@ -11,12 +11,8 @@
         android:layout_height="match_parent"
         android:columnWidth="150dp"
         android:numColumns="auto_fit"
-        android:verticalSpacing="8dp"
-        android:horizontalSpacing="8dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
         android:id="@+id/officialsGrid"
-        card:list_card_layout_resourceID="@layout/officials_list_card_view"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"/>
+        card:list_card_layout_resourceID="@layout/officials_list_card_view"/>
 </RelativeLayout>

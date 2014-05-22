@@ -2,12 +2,10 @@ package com.teebz.hrf.cards;
 
 import com.teebz.hrf.Helpers;
 import com.teebz.hrf.R;
-import com.teebz.hrf.activities.SingleImageActivity;
 import com.teebz.hrf.entities.Rule;
 import com.teebz.hrf.searchparsers.RuleSearcher;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.Html;
@@ -20,7 +18,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import it.gmariotti.cardslib.library.internal.Card;
 
@@ -31,28 +28,17 @@ public class RuleDetailCard extends Card {
     private String mHighlightText;
 
     public RuleDetailCard(Context context) {
-        this(context, R.layout.rule_detail_card_inner_layout);
+        this(context, R.layout.simple_hrf_card_inner_layout);
     }
 
     public RuleDetailCard(Context context, int innerLayout) {
         super(context, innerLayout);
         mContext = context;
-        //setClickListeners();
     }
 
     public void setDetails(Rule rule, String highlightText) {
         mRule = rule;
         mHighlightText = highlightText;
-    }
-
-    private void setClickListeners(){
-        //Set a OnClickListener listener
-        setOnClickListener(new OnCardClickListener() {
-            @Override
-            public void onClick(Card card, View view) {
-                Toast.makeText(getContext(), "Click Listener card=", Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
     @Override
@@ -130,7 +116,11 @@ public class RuleDetailCard extends Card {
                     iv.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            showLargeImage(view.getTag().toString());
+                            Helpers.showLargeImage(mContext,
+                                    view.getTag().toString(),
+                                    mContext.getResources()
+                                            .getString(R.string.diagram_detail_header),
+                                    Helpers.DIAGRAM_IMGS_FOLDER);
                         }
                     });
                     layout.addView(iv);
@@ -147,13 +137,5 @@ public class RuleDetailCard extends Card {
 
     }
 
-    private void showLargeImage(String imgName) {
-        //If this is copied again, move it to a shared location w/the other usage.
-        Intent newActivity = new Intent(mContext, SingleImageActivity.class);
-        newActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        newActivity.putExtra(SingleImageActivity.SINGLE_IMAGE_KEY, imgName);
-        newActivity.putExtra(SingleImageActivity.SINGLE_IMAGE_TITLE, "Diagram Detail View");
-        newActivity.putExtra(SingleImageActivity.SINGLE_IMAGE_FOLDER, Helpers.DIAGRAM_IMGS_FOLDER);
-        mContext.startActivity(newActivity);
-    }
+
 }

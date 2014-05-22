@@ -53,6 +53,8 @@
     <string name="header_rule_id">Rule #</string>
     <string name="header_section">Sec:  </string>
 
+    <string name="diagram_detail_header">Diagram Detail</string>
+
     <!--
         All the placeholders here. None of these will be displayed to the user,
         they are just for appearance sake in the preview window.
