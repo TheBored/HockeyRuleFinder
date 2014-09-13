@@ -5,13 +5,11 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.9.+'
-        classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.9.+'
+        classpath 'com.android.tools.build:gradle:0.12.2'
         classpath 'com.crashlytics.tools.gradle:crashlytics-gradle:1.+'
     }
 }
 
-apply plugin: 'android-sdk-manager'
 apply plugin: 'android'
 apply plugin: 'crashlytics'
 repositories {
@@ -21,12 +19,12 @@ repositories {
 
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.0.3"
+    compileSdkVersion 20
+    buildToolsVersion "19.1.0"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 19
+        targetSdkVersion 20
     }
 
     lintOptions {
@@ -46,8 +44,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:+'
-    compile 'com.android.support:support-v4:+'
+    compile 'com.android.support:support-v4:20.0.0'
     compile 'com.crashlytics.android:crashlytics:1.+'
     compile 'com.github.gabrielemariotti.cards:library:1.6.0'
 }
