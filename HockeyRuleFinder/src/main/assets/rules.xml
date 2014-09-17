@@ -90,8 +90,7 @@
                 <par>Each players’ bench shall have two doors which must be uniform in location and size. ("Mirrored image benches") All doors opening to the playing surface shall be constructed so that they swing inward.</par>
             </rule>
             <rule ruleid="3.2" rulename="Penalty Bench">
-                <par>Each rink must be provided with benches or seats to be known as the "PENALTY BENCH." These benches or seats must be capable of accommodating a total of ten persons including the Off- Ice Officials. Separate penalty benches shall be provided for each Team and they shall be situated on opposite sides of the</par>
-                <par>Timekeeper’s area, directly across the ice from the players’ benches. The penalty bench(es) must be situated in the neutral zone.</par>
+                <par>Each rink must be provided with benches or seats to be known as the "PENALTY BENCH." These benches or seats must be capable of accommodating a total of ten persons including the Off- Ice Officials. Separate penalty benches shall be provided for each Team and they shall be situated on opposite sides of the Timekeeper’s area, directly across the ice from the players’ benches. The penalty bench(es) must be situated in the neutral zone.</par>
                 <par>Each Penalty Bench shall be protected from the spectator area by means of a glass partition which shall not be less than five feet (5') above the height of the boards.</par>
             </rule>
         </rule>
@@ -108,11 +107,12 @@
                 <par>The game time clock shall measure the time remaining in tenths of a second during the last minutes of each period.</par>
             </rule>
         </rule>
+    </section>
+    <section sectionid="2" sectionname="Teams">
         <rule ruleid="5" rulename="Team">
             <rule ruleid="5.1" rulename="Eligible Players">
                 <par>A team shall be composed of 20 players (18 skaters and two goalkeepers) who shall be under contract to the Club they represent. For the purposes of these playing rules, any reference to "player" shall refer to both skaters and goalkeepers. Any reference to "goalkeeper" shall mean that the section of the rule is specific to goalkeepers.</par>
-                <par>At the beginning of each game, the Manager or Coach of each team shall list the players who shall be eligible to play in the game.</par>
-                <par>Not more than eighteen (18) skaters and two (2) goalkeepers, shall be permitted. One non-uniformed player shall be permitted on the players’ bench in a coaching capacity. He must be indicated on the Roster Sheet submitted by the Coach to the Referee or Official Scorer prior to the start of the game.</par>
+                <par>At the beginning of each game, the Manager or Coach of each team shall list the players who shall be eligible to play in the game. Not more than eighteen (18) skaters and two (2) goalkeepers, shall be permitted. One non-uniformed player shall be permitted on the players’ bench in a coaching capacity. He must be indicated on the Roster Sheet submitted by the Coach to the Referee or Official Scorer prior to the start of the game.</par>
                 <par>A list of names and numbers of all eligible players must be handed to the Official Scorer before the game, and no change shall be permitted in the list or addition thereto shall be permitted after the commencement of the game.</par>
                 <par>Prior to the game, if an official (on-ice or off-ice) notices that a player is in uniform but has not been included on the Official Game Report, the Referee shall bring this to the attention of the offending team so that the necessary correction can be made to the Official Game Report (and no penalty is assessed).</par>
             </rule>
@@ -132,8 +132,6 @@
                 <par>One non-uniformed player shall be permitted on the players’ bench in a coaching capacity. He must be indicated on the Roster Sheet submitted by the Coach to the Official Scorer prior to the start of the game.</par>
             </rule>
         </rule>
-    </section>
-    <section sectionid="2" sectionname="Teams">
         <rule ruleid="6" rulename="Captain and Alternate Captains">
             <rule ruleid="6.1" rulename="Captain">
                 <par>One Captain shall be appointed by each team, and he alone shall have the privilege of discussing with the Referee any questions relating to interpretation of rules which may arise during the progress of a game. He shall wear the letter "C," approximately three inches (3'') in height and in contrasting color, in a conspicuous position on the front of his sweater. No co-Captains are permitted. Either one Captain and no more than two Alternate Captains, or no Captain and no more than three Alternate Captains are permitted (see [link=6.2]6.2[/link]).</par>
@@ -194,7 +192,9 @@
             <rule ruleid="9.3" rulename="Player’s Jersey">
                 <par>(see [link=9.4]9.4[/link] for goalkeeper) The maximum jersey size is (see diagram).[image]players_jersey[/image]</par>
                 <par>No inserts or additions are to be added to the standard players’ jersey as produced by the manufacturer. (Modifications at the manufacturer are not allowed unless approved in advance by the League)</par>
-                <par>No alteration of the neck opening is permitted. Sleeves must extend into the cuff of the glove. Jerseys must be "tied down" properly at all times.</par>
+                <par>No alteration of the neck opening is permitted.</par>
+				<par>Sleeves must extend into the cuff of the glove.</par>
+				<par>Jerseys must be "tied down" properly at all times.</par>
             </rule>
             <rule ruleid="9.4" rulename="Goalkeeper’s Jersey">
                 <par>The maximum jersey size is (see diagram).[image]goalkeepers_jersey[/image]</par>
@@ -943,7 +943,9 @@
                 <par>There shall be appointed for duty at every game played in the League the following Real Time Scorers:</par>
                 <par>(i) Stats Entry Scorer</par>
                 <par>(ii) Stats Entry Scorer</par>
-                <par>(iii) Time on ice Scorer - Home (iv) Time on ice Scorer - Visitor (v) Event Analyst</par>
+                <par>(iii) Time on ice Scorer - Home</par>
+				<par>(iv) Time on ice Scorer - Visitor</par>
+				<par>(v) Event Analyst</par>
                 <par>Assigned by the League to oversee the Real Time Scorers and the data collected is a Scoring System Manager (SSM), an off-ice official who is required to work one of the five (5) positions noted above in each game played.</par>
             </rule>
             <rule ruleid="37.3" rulename="Reports">
