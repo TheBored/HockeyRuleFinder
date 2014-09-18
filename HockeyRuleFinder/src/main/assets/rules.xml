@@ -193,15 +193,15 @@
                 <par>(see [link=9.4]9.4[/link] for goalkeeper) The maximum jersey size is (see diagram).[image]players_jersey[/image]</par>
                 <par>No inserts or additions are to be added to the standard players' jersey as produced by the manufacturer. (Modifications at the manufacturer are not allowed unless approved in advance by the League)</par>
                 <par>No alteration of the neck opening is permitted.</par>
-				<par>Sleeves must extend into the cuff of the glove.</par>
-				<par>Jerseys must be "tied down" properly at all times.</par>
+                <par>Sleeves must extend into the cuff of the glove.</par>
+                <par>Jerseys must be "tied down" properly at all times.</par>
             </rule>
             <rule ruleid="9.4" rulename="Goalkeeper's Jersey">
                 <par>The maximum jersey size is (see diagram).[image]goalkeepers_jersey[/image]</par>
                 <par>No inserts or additions are to be added to the standard goalkeeper-cut jersey as produced by the manufacturer. Modifications at the manufacturer are not allowed unless approved in advance by the League.</par>
                 <par>No "tying down" of the sweater is allowed at the wrists if it creates a tension across the jersey such that a "webbing effect" is created in the armpit area.</par>
                 <par>No other tie downs are allowed that create a "webbing effect."</par>
-				<par>The length of a jersey is illegal if it covers any area between the goalkeeper's legs.</par>
+                <par>The length of a jersey is illegal if it covers any area between the goalkeeper's legs.</par>
             </rule>
             <rule ruleid="9.5" rulename="Protective Equipment">
                 <par>All protective equipment, except gloves, headgear and goalkeepers' leg guards must be worn under the uniform. Should it be brought to the attention of the Referee that a player is wearing, for example, an elbow pad that is not covered by his jersey, he shall instruct the player to cover up the pad and a second violation by the same player would result in a minor penalty being assessed.</par>
@@ -547,16 +547,16 @@
                 <par>The automatic suspensions incurred under this subsection in respect to League games shall have no effect with respect to violations during Playoff games.</par>
                 <par>Any request by a Club to have a game misconduct reviewed and rescinded by the League must submit their request in writing to the League's Hockey Operations Department within 48 hours of the conclusion of the game in which the game misconduct was assessed. Failure to submit the written request within this time frame will automatically result in the game misconduct being upheld and no further review of the incident will be considered or entertained. This does not apply to infractions addressed under Rule [link=28]28[/link] - Supplementary Discipline.</par>
             </rule>
-            <rule ruleid="23.3" rulename="Fines and Suspensions">
-                <par>General Category - In regular League games, any player who incurs a total of three (3) game misconduct penalties in the "General Category" and exclusive of other designated categories, shall be suspended for the next League game of his team. For each subsequent game misconduct penalty, the automatic suspension shall be increased by one game. For each suspension of a player or goalkeeper, his Club shall be fined one thousand dollars ($1,000).</par>
+            <rule ruleid="23.3" rulename="Fines and Suspensions - General Category">
+                <par>In regular League games, any player who incurs a total of three (3) game misconduct penalties in the "General Category" and exclusive of other designated categories, shall be suspended for the next League game of his team. For each subsequent game misconduct penalty, the automatic suspension shall be increased by one game. For each suspension of a player or goalkeeper, his Club shall be fined one thousand dollars ($1,000).</par>
                 <par>In Playoff games, any player who incurs a total of two game misconduct penalties in the "General Category" shall be suspended automatically for the next Playoff game of his team. For each subsequent game misconduct penalty during the Playoffs, the automatic suspension shall be increased by one game. For each suspension of a player during Playoffs, his club shall be fined one thousand dollars ($1,000).</par>
                 <par>For a list of infractions involving game misconducts that are included in the "General Category", please refer to the Reference Tables - Table 10 - Summary of Game Misconduct Fouls Included in the "General Category" (page 134). See specific rule numbers for complete descriptions.</par>
             </rule>
-            <rule ruleid="23.4" rulename="Fines and Suspensions">
-                <par>Abuse of Officials Category - In regular League or Playoff games, any player who incurs a total of two (2) game misconduct penalties for abuse of officials related infractions penalized under Rule [link=39]39[/link] - Abuse of Officials, shall be suspended automatically for the next League or Playoff game of his team. For each subsequent game misconduct penalty, the automatic suspension shall be increased by one game.</par>
+            <rule ruleid="23.4" rulename="Fines and Suspensions - Abuse of Officials Category">
+                <par>In regular League or Playoff games, any player who incurs a total of two (2) game misconduct penalties for abuse of officials related infractions penalized under Rule [link=39]39[/link] - Abuse of Officials, shall be suspended automatically for the next League or Playoff game of his team. For each subsequent game misconduct penalty, the automatic suspension shall be increased by one game.</par>
             </rule>
-            <rule ruleid="23.5" rulename="Fines and Suspensions">
-                <par>Stick Infractions, Boarding and Checking from Behind Category - In regular season League games, any player who incurs a total of two (2) game misconduct penalties for stick-related infractions, Boarding - Rule [link=41]41[/link], or Checking from Behind - Rule [link=43]43[/link], before playing in 41 consecutive regular season League games without one such penalty, shall be suspended automatically for the next regular season League game of his team. For each subsequent game misconduct penalty, the automatic suspension shall be increased by one game.</par>
+            <rule ruleid="23.5" rulename="Fines and Suspensions - Stick Infractions, Boarding and Checking from Behind Category">
+                <par>In regular season League games, any player who incurs a total of two (2) game misconduct penalties for stick-related infractions, Boarding - Rule [link=41]41[/link], or Checking from Behind - Rule [link=43]43[/link], before playing in 41 consecutive regular season League games without one such penalty, shall be suspended automatically for the next regular season League game of his team. For each subsequent game misconduct penalty, the automatic suspension shall be increased by one game.</par>
                 <par>In Playoff games any player who incurs a total of two (2) game misconduct penalties for stick-related infractions, Boarding - Rule [link=41]41[/link], or Checking from Behind - Rule [link=43]43[/link], shall be suspended automatically for the next Playoff game of his team. For each subsequent game misconduct penalty in this category during the Playoffs the automatic suspension shall be increased by one game</par>
                 <par>Prior to the commencement of each Stanley Cup Finals, a player will have his current stick-related, boarding and checking from behind game misconducts removed from his current playoff record. They will remain part of his historical record.</par>
                 <par>When a player has played in 41 consecutive regular season League games without being assessed a stick-related major and a game misconduct penalty according to Rule [link=20]20[/link] - Major Penalties or Rule [link=22]22[/link] - Misconduct Penalties, he will have the previous game misconduct penalties removed from his current record. They will remain part of his historical record.</par>
@@ -581,8 +581,7 @@
                 <par>A penalty shot is designed to restore a scoring opportunity which was lost as a result of a foul being committed by the offending team, based on the parameters set out in these rules.</par>
             </rule>
             <rule ruleid="24.2" rulename="Procedure">
-                <par>The Referee shall ask to have announced over the public address system the name of the player designated by him or selected by the team entitled to take the shot (as appropriate). He shall then place the puck on the center face-off spot and the player taking the shot will, on the instruction of the Referee (by blowing his whistle), play the puck from there and shall attempt to score on the goalkeeper.</par>
-                <par>The puck must be kept in motion towards the opponent's goal line and once it is shot, the play shall be considered complete. No goal can be scored on a rebound of any kind (an exception being the puck off the goal post or crossbar, then the goalkeeper and then directly into the goal), and any time the puck crosses the goal line or comes to a complete stop, the shot shall be considered complete.</par>
+                <par>The Referee shall ask to have announced over the public address system the name of the player designated by him or selected by the team entitled to take the shot (as appropriate). He shall then place the puck on the center face-off spot and the player taking the shot will, on the instruction of the Referee (by blowing his whistle), play the puck from there and shall attempt to score on the goalkeeper. The puck must be kept in motion towards the opponent's goal line and once it is shot, the play shall be considered complete. No goal can be scored on a rebound of any kind (an exception being the puck off the goal post or crossbar, then the goalkeeper and then directly into the goal), and any time the puck crosses the goal line or comes to a complete stop, the shot shall be considered complete.</par>
                 <par>The lacrosse-like move whereby the puck is picked up on the blade of the stick and "whipped" into the net shall be permitted provided the puck is not raised above the height of the shoulders at any time and when released, is not carried higher than the crossbar. See also [link=80.1]80.1[/link].</par>
                 <par>The spin-o-rama type move where the player completes a 360° turn as he approaches the goal, shall be permitted as this involves continuous motion. However, should the puck come to a complete stop at any time during the shot attempt, the shot shall be stopped and no goal will be the result.</par>
                 <par>Only a player designated as a goalkeeper or alternate goalkeeper may defend against the penalty shot.</par>
@@ -875,8 +874,7 @@
             <rule ruleid="34.7" rulename="Verification of Time">
                 <par>Any loss of time on the game or penalty clocks due to a false face-off must be replaced as appropriate. The Video Goal Judge may be consulted to ensure the time is accurately replaced.</par>
                 <par>In the event of any dispute regarding time, the matter shall be referred to the Referees for adjudication and their decision shall be final. They may use the Video Goal Judge to assist in rendering their final decision. (See Rule [link=38]38[/link] - Video Goal Judge.) The Game Timekeeper shall assist to verify game time using an additional timing device (League-approved stopwatch).</par>
-                <par>In the event that clock fails to operate when play resumes, the on- ice officials may elect to stop play provided there is no imminent scoring opportunity or wait until the next legitimate stoppage of play.</par>
-                <par>In cooperation with the Game Timekeeper and the Video Goal Judge, the clock is to be re-set to the appropriate time.</par>
+                <par>In the event that clock fails to operate when play resumes, the on- ice officials may elect to stop play provided there is no imminent scoring opportunity or wait until the next legitimate stoppage of play. In cooperation with the Game Timekeeper and the Video Goal Judge, the clock is to be re-set to the appropriate time.</par>
                 <par>In the event that a video replay shows a goal was scored prior to the play being stopped, the Video Goal Judge will inform the Game Timekeeper and Official Scorer of the time of goal and the amount of playing time left to be reset on the game clock.</par>
             </rule>
         </rule>
@@ -934,8 +932,8 @@
                 <par>(i) Stats Entry Scorer</par>
                 <par>(ii) Stats Entry Scorer</par>
                 <par>(iii) Time on ice Scorer - Home</par>
-				<par>(iv) Time on ice Scorer - Visitor</par>
-				<par>(v) Event Analyst</par>
+                <par>(iv) Time on ice Scorer - Visitor</par>
+                <par>(v) Event Analyst</par>
                 <par>Assigned by the League to oversee the Real Time Scorers and the data collected is a Scoring System Manager (SSM), an off-ice official who is required to work one of the five (5) positions noted above in each game played.</par>
             </rule>
             <rule ruleid="37.3" rulename="Reports">
@@ -1024,7 +1022,7 @@
             <rule ruleid="39.5" rulename="Game Misconduct Penalty">
                 <par>Game misconduct penalties shall be assessed under this rule for the following infractions:</par>
                 <par>(i) Any player who, after being assessed a misconduct penalty, persists in challenging or disputing the ruling of an official.</par>
-                <par>(ii) When a player, Coach or non-playing person uses obscene, profane or abusive language or gesture directed at any on or off-ice official or uses the name of any official coupled with any vociferous remarks, after already being assessed a bench minor penalty (39.3 (ii)), this Coach or non-playing person is to be assessed a game misconduct and the situation reported to the Commissioner for further action. When this type of conduct occurs after the expiration of the game, on or off the ice, the game misconduct shall be applied without the necessity of having been assessed a bench minor penalty previously.</par>
+                <par>(ii) When a player, Coach or non-playing person uses obscene, profane or abusive language or gesture directed at any on or off-ice official or uses the name of any official coupled with any vociferous remarks, after already being assessed a bench minor penalty ([link=39.3]39.3[/link] (ii)), this Coach or non-playing person is to be assessed a game misconduct and the situation reported to the Commissioner for further action. When this type of conduct occurs after the expiration of the game, on or off the ice, the game misconduct shall be applied without the necessity of having been assessed a bench minor penalty previously.</par>
                 <par>(iii) Any player who deliberately applies physical force in any manner against an official, in any manner attempts to injure an official, physically demeans, or deliberately applies physical force to an official solely for the purpose of getting free of such an official during or immediately following an altercation shall receive a game misconduct penalty and the guidelines set out in Rule [link=40]40[/link] - Physical Abuse of Officials are to be applied.</par>
                 <par>(iv) Any player who, having entered the penalty bench, leaves the penalty bench prior to the expiration of his penalty for the purpose of challenging an official's ruling, shall be assessed a game misconduct penalty. He shall also be automatically suspended for the next three (3) regular League and/or Play-off games of his Club. This rule does not replace any other more severe penalty that may be imposed for leaving the penalty bench for the purpose of starting or participating in an altercation. See Rule [link=70]70[/link] - Leaving the Bench.</par>
                 <par>(v) A minor penalty for unsportsmanlike conduct plus a game misconduct shall be imposed on a player who throws his stick or any part thereof, or any other piece of equipment or object outside the playing area in protest of an official's decision.</par>
@@ -1672,7 +1670,10 @@
                 <par>A bench minor penalty shall be imposed upon any Team which, after warning by the Referee to its Captain or Alternate Captain to place the correct number of players on the ice and commence play, fails to comply with the Referee's direction and thereby causes any delay by making additional substitutions (including, but not limited to, continually substituting goalkeepers for the purpose of stalling or delaying the game), by persisting in having its players off-side, or in any other manner.</par>
             </rule>
             <rule ruleid="63.4" rulename="Objects Thrown on the Ice">
-                <par>In the event that objects are thrown on the ice that interfere with the progress of the game, the Referee shall blow the whistle and stop the play and the puck shall be faced-off at a face-off spot in the zone nearest to the spot where play is stopped. When objects are thrown on the ice during a stoppage in play, including after the scoring of a goal, the Referee shall have announced over the public address system that any further occurrences will result in a bench minor penalty being assessed to the home Team. Articles thrown onto the ice following a special occasion (i.e. hat trick) will not result in a bench minor penalty being assessed. Refer also to Rule [link=53.6]53.6[/link] when spectator interference occurs during a breakaway. goalkeeper or player during the course of a "breakaway," a penalty shot will be awarded to the non-offending team, which shot shall be taken by the player last in possession of the puck.</par>
+                <par>In the event that objects are thrown on the ice that interfere with the progress of the game, the Referee shall blow the whistle and stop the play and the puck shall be faced-off at a face-off spot in the zone nearest to the spot where play is stopped. When objects are thrown on the ice during a stoppage in play, including after the scoring of a goal, the Referee shall have announced over the public address system that any further occurrences will result in a bench minor penalty being assessed to the home Team. Articles thrown onto the ice following a special occasion (i.e. hat trick) will not result in a bench minor penalty being assessed. Refer also to Rule [link=53.6]53.6[/link] when spectator interference occurs during a breakaway.</par>
+            </rule>
+            <rule ruleid="63.5" rulename="Penalty Shot">
+                <par>If the goal post is deliberately displaced by a goalkeeper or player during the course of a "breakaway," a penalty shot will be awarded to the non-offending team, which shot shall be taken by the player last in possession of the puck.</par>
                 <par>If by reason of insufficient time in the regular playing time or by reason of penalties already imposed, the minor penalty assessed to a player for deliberately displacing his own goal post cannot be served in its entirety within the regular playing time of the game or at any time in overtime, a penalty shot shall be awarded against the offending team.</par>
                 <par>No defending player, except the goalkeeper, will be permitted to fall on the puck, hold the puck, pick up the puck, or gather the puck into the body or hands when the puck is within the goal crease. For infringement of this rule, play shall immediately be stopped and a penalty shot shall be ordered against the offending team, but no other penalty shall be given. The rule shall be interpreted so that a penalty shot will be awarded only when the puck is in the crease at the instant the offense occurs. However, in cases where the puck is outside the crease, Rule [link=63]63[/link] may still apply and a minor penalty may be imposed, even though no penalty shot is awarded. The significant factor when determining whether or not a penalty shot is warranted is the location of the puck at the time it was held, grabbed or gathered into the body. If the puck is in the crease, penalty shot. If the puck is outside the crease and gathered into the body of a player (other than the goalkeeper) who is inside the crease, minor penalty). See also Rule [link=67]67[/link] - Handling Puck.</par>
             </rule>
@@ -1684,12 +1685,12 @@
             </rule>
             <rule ruleid="63.7" rulename="Infractions">
                 <par>The following list of infractions shall result in a penalty (minor, bench minor, penalty shot or awarded goal) being imposed by the Referee for delaying the game:</par>
-                <par>(i)  Deliberately shooting the puck out of play.</par>
+                <par>(i) Deliberately shooting the puck out of play.</par>
                 <par>(ii) Deliberately throwing or batting the puck out of play.</par>
                 <par>(iii) Shooting or batting the puck (with the hand or with the stick) over the glass from the defending zone.</par>
                 <par>(iv) Deliberately displacing the goal from it's normal position (or accidentally by a defending player or goalkeeper in relation to the awarding of a goal).</par>
                 <par>(v) Refusing to place the correct number of players on the ice.</par>
-				<par>(vi) Persisting in having players in an off-side position.</par>
+                <par>(vi) Persisting in having players in an off-side position.</par>
                 <par>(vii) Deliberately falling on the puck.</par>
                 <par>(viii) Adjustment of clothing or equipment.</par>
             </rule>
@@ -1904,8 +1905,10 @@
             <rule ruleid="73.2" rulename="Procedure">
                 <par>Team On Ice - If, when both teams are on the ice, one team for any reason shall refuse to play when ordered to do so by the Referee, he shall warn the Captain and allow the team so refusing fifteen (15) seconds within which to begin the play or resume play. If at the end of that time, the team shall still refuse to play, the Referee shall impose a bench minor penalty for delay of game on a player of the offending team to be designated by the Coach of that team through the playing Captain. Should there be a repetition of the same incident, the Referee shall notify the Coach that he has been fined the sum of two hundred dollars ($200). The offending Coach shall be removed from the players' bench and assessed a game misconduct penalty.</par>
                 <par>Should the offending team still refuse to play, the Referee shall have no alternative but to declare that the game be forfeited to the non-offending Club and the case shall be reported to the Commissioner for further action (see Rule [link=66]66[/link] - Forfeit of Game).</par>
-                <par>First Violation Second Violation</par>
+                <par>First Violation</par>
                 <par>(i) Warn the Captain of the offending team and allow 15 seconds within which to resume play.</par>
+                <par>(ii) If at the end of the 15 seconds the team still refuses to resume play, assess a bench minor penalty to the offending team for delay of game.</par>
+                <par>Second Violation</par>
                 <par>(i) Warn the Captain of the offending team and allow 15 seconds within which to resume play.</par>
                 <par>(ii) If at the end of the 15 seconds the team still refuses to resume play, assess a bench minor penalty to the offending team for delay of game.</par>
                 <par>(iii) Referee is to notify the Coach of the offending team that he has been fined the sum of two hundred dollars ($200) and the Coach is to be assessed a game misconduct penalty.</par>
@@ -1913,7 +1916,7 @@
             </rule>
             <rule ruleid="73.3" rulename="Procedure">
                 <par>Team Off Ice - If a team, when ordered to do so by the Referee through its Club Executive, Manager or Coach, fails to go on the ice and start play within five (5) minutes, the Club Executive, Manager or Coach shall be fined five hundred dollars ($500), the game shall be forfeited and the case shall be reported to the Commissioner for further action (see Rule [link=66]66[/link] - Forfeit of Game).</par>
-                <par>(i)  Once it is apparent to the Referee that the team is refusing to come onto the ice and begin play, a bench minor penalty is to be assessed to the offending team for delay of game.</par>
+                <par>(i) Once it is apparent to the Referee that the team is refusing to come onto the ice and begin play, a bench minor penalty is to be assessed to the offending team for delay of game.</par>
                 <par>(ii) Five (5) minutes will be provided for the offending team to return to the ice and begin play.</par>
                 <par>(iii) After the five (5) minutes has elapsed and the offending team still has not returned to the ice to resume play, the game shall be forfeited. The Commissioner of the League shall issue instructions pertaining to records, etc., of a forfeited game (see Rule [link=66]66[/link] - Forfeit of Game).</par>
                 <par>(iv) Once the Club Executive, Manager or Coach has been notified of the five (5) minute warning, and the team returns to the ice to resume play within that time frame, a bench minor penalty for delay of game must be assessed to the offending team.</par>
@@ -2013,7 +2016,7 @@
                 <par>As soon as the line change procedure has been completed by the Referee and he lowers his hand to indicate no further changes, the Linesman conducting the face-off shall blow his whistle. This will signal to both teams that they have no more than five (5) seconds to line up for the ensuing face-off. At the end of the five (5) seconds (or sooner if both centers are ready), the Linesman will conduct a proper face-off. If, however:</par>
                 <par>(i) One or both centers are not positioned for the face-off,</par>
                 <par>(ii) One or both centers refrain from placing their stick on the ice,</par>
-				<par>(iii) Any player has encroached into the face-off circle,</par>
+                <par>(iii) Any player has encroached into the face-off circle,</par>
                 <par>(iv) Any player makes physical contact with an opponent, or</par>
                 <par>(v) Any player who lines up for the face-off in an off-side position, the Linesman shall have the offending center(s) replaced immediately prior to dropping the puck.</par>
                 <par>In the last two (2) minutes of regulation time or any time in overtime, the Linesman will still blow his whistle to initiate the face-off, but the five (5) second time limit will not be enforced. However, players must abide by the verbal directions given by the Linesman in his attempt to conduct a fast and fair face-off.</par>
@@ -2093,9 +2096,9 @@
                 <par>Apparent goals shall be disallowed by the Referee and the appropriate announcement made by the Public Address Announcer for the following reasons:</par>
                 <par>(i) When the puck has been directed, batted or thrown into the net by an attacking player other than with a stick.</par>
                 <par>(ii) When the puck has been kicked using a distinct kicking motion.</par>
-				<par>(iii) When the puck has deflected directly into the net off an official.</par>
+                <par>(iii) When the puck has deflected directly into the net off an official.</par>
                 <par>(iv) When a goal has been scored and an ineligible player is on the ice.</par>
-				<par>(v) When an attacking player has interfered with a goalkeeper in his goal crease.</par>
+                <par>(v) When an attacking player has interfered with a goalkeeper in his goal crease.</par>
                 <par>(vi) When the puck has entered the net after making contact with an attacking player's stick that is above the height of the crossbar. Where the puck makes contact with the stick is the determining factor. See [link=38.4]38.4[/link](vi).</par>
                 <par>(vii) When video review confirms the scoring of a goal at one end of the ice, any goal scored at the other end on the same play must be disallowed.</par>
                 <par>(viii) When a Linesman reports a double-minor penalty for high-sticking, a major penalty or a match penalty to the Referee following the scoring of a goal by the offending team, the goal must be disallowed and the appropriate penalty assessed.</par>
