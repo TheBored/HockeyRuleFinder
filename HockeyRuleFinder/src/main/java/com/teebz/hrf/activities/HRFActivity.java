@@ -7,6 +7,7 @@ import com.teebz.hrf.searchparsers.RuleDataServices;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,10 +26,11 @@ public class HRFActivity extends Activity {
     protected static final String HRF_LOAD_ID = "HRF_LOAD_ID";
     private static String DB_PATH = "/data/data/com.teebz.hrf/databases/";
     private static String DB_NAME = "rules.sqlite";
+    private static String TEMP_DB_NAME = "tempRules.sqlite";
 
-    protected boolean showMenu;
+    protected boolean mShowMenu;
     protected UpMenuBehavior menuBehavior;
-    protected RuleDataServices ruleDataServices;
+    protected RuleDataServices mRuleDataServices;
 
     protected enum UpMenuBehavior {
         None,
@@ -37,7 +40,7 @@ public class HRFActivity extends Activity {
 
     public HRFActivity() {
         //Default values in case they are not set.
-        showMenu = true;
+        mShowMenu = true;
         menuBehavior = UpMenuBehavior.None;
     }
 
@@ -49,13 +52,12 @@ public class HRFActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ruleDataServices = RuleDataServices.getRuleDataServices(getBaseContext());
+        mRuleDataServices = RuleDataServices.getRuleDataServices(getBaseContext());
 
-        //TODO: Check database size, if different then do this.
         //First time we are running anything. Check and see if we need to copy the database over.
         try {
-            if (!checkDatabase()) {
-                copyDatabase();
+            if (!isDatabaseCurrent()) {
+                copyDatabase(DB_PATH + DB_NAME);
             }
         } catch (IOException e) {
             //Do nothing.
@@ -77,7 +79,7 @@ public class HRFActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        if (showMenu){
+        if (mShowMenu){
             getMenuInflater().inflate(R.menu.main, menu);
         }
         return true;
@@ -110,20 +112,30 @@ public class HRFActivity extends Activity {
      * Check if the database already exist to avoid re-copying the file each time you open the application.
      * @return true if it exists, false if it doesn't
      */
-    private boolean checkDatabase(){
-        SQLiteDatabase checkDB = null;
-
+    private boolean isDatabaseCurrent(){
+        String localPath = DB_PATH + DB_NAME;
+        String tempPath = DB_PATH + TEMP_DB_NAME;
+        String version = null;
         try{
-            String myPath = DB_PATH + DB_NAME;
-            checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
-        }catch(SQLiteException e){
-            //database does't exist yet.
-        }
+            //Get the local (existing) version.
+            String localVersion = getDatabaseVersion(localPath);
 
-        if(checkDB != null){
-            checkDB.close();
+            //Copy the APK database over so we can easily open it for comparison.
+            copyDatabase(tempPath);
+
+            //Get the APK database version
+            String apkVersion = getDatabaseVersion(tempPath);
+
+            //Now that we're done with the apk version of the database, delete it.
+            File tmpDB = new File(tempPath);
+            tmpDB.delete();
+
+            //Do the versions match?
+            return localVersion.equals(apkVersion);
+        }catch(Exception e){
+            //Anything breaks above - copy the database.
+            return false;
         }
-        return checkDB != null;
     }
 
     /**
@@ -131,15 +143,12 @@ public class HRFActivity extends Activity {
      * system folder, from where it can be accessed and handled.
      * This is done by transfering bytestream.
      * */
-    private void copyDatabase() throws IOException {
+    private void copyDatabase(String outputLocation) throws IOException {
         //Open your local db as the input stream
         InputStream myInput = getAssets().open(DB_NAME);
 
-        // Path to the just created empty db
-        String outFileName = DB_PATH + DB_NAME;
-
         //Open the empty db as the output stream
-        OutputStream myOutput = new FileOutputStream(outFileName);
+        OutputStream myOutput = new FileOutputStream(outputLocation);
 
         //transfer bytes from the inputfile to the outputfile
         byte[] buffer = new byte[1024];
@@ -152,5 +161,18 @@ public class HRFActivity extends Activity {
         myOutput.flush();
         myOutput.close();
         myInput.close();
+    }
+
+    private String getDatabaseVersion(String path) {
+        SQLiteDatabase localDB = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READONLY);
+
+        //Hard coded as I do not plan on changing this in the future. Can revise if req'd.
+        Cursor cursor = localDB.query("app_info", new String[] { "value" }, "key='VERSION'", null, null, null, null);
+        cursor.moveToFirst();
+        String version = cursor.getString(0);
+        cursor.close();
+        localDB.close();
+
+        return version;
     }
 }

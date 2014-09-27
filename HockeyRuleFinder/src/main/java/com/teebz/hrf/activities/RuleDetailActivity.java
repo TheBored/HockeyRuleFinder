@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+import android.view.Window;
 
 public class RuleDetailActivity extends HRFActivity {
     private Rule mRule;
@@ -21,6 +22,10 @@ public class RuleDetailActivity extends HRFActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Sometimes we don't get the actionbar that we expect. Add in a request to ensure it's there.
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+
         setContentView(R.layout.rule_detail_main);
 
         //We may have come from another action, we may have come from a link. Figure out which.
@@ -36,10 +41,10 @@ public class RuleDetailActivity extends HRFActivity {
             //We don't know if this rule is a "parent" rule or not. The rule detail fragment shows
             //parent rules only (always shows children) so we need to find out which one we have.
             //Get the exact rule
-            mRule = ruleDataServices.getRuleByNum(ruleNum, getLeagueId());
+            mRule = mRuleDataServices.getRuleByNum(ruleNum, getLeagueId());
             ruleTarget = mRule.getRID();//Mark this rule as our target - makes the resulting view auto scroll to the link.
             if (mRule.getSubRules() == null || mRule.getSubRules().size() == 0){ //We don't have children, go get our parent.
-                mRule = ruleDataServices.getParentRuleByNum(ruleNum, getLeagueId());
+                mRule = mRuleDataServices.getParentRuleByNum(ruleNum, getLeagueId());
             }
         } else if (extras != null) { //We came from an action
             mRule = (Rule)extras.getSerializable(RuleDetailFragment.RULES_DETAIL_KEY);

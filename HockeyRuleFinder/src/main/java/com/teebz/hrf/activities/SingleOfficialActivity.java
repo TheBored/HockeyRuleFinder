@@ -12,7 +12,7 @@ public class SingleOfficialActivity extends HRFActivity {
     private String mJerseyNumber;
 
     public SingleOfficialActivity() {
-        super.showMenu = false;
+        super.mShowMenu = false;
         super.menuBehavior = UpMenuBehavior.Finish;
     }
 
