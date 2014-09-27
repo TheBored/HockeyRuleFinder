@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*
 public class RuleSearcher {
     public static final int SEARCH_BUFFER_SPACE = 45; //Number of characters to buffer around search text
     private static RuleSearcher searcher;
@@ -156,7 +157,7 @@ public class RuleSearcher {
                         text.trim().toLowerCase().equals(child.id)) {
                         isTitleMatch = true;
                     }
-                    for (String par : child.searchableContents) {
+                    for (String par : child.searchContents) {
                         if (par.toLowerCase().contains(text.toLowerCase())) {
                             contentFound.add(par);
                         }
@@ -241,3 +242,4 @@ public class RuleSearcher {
         return response;
     }
 }
+*/

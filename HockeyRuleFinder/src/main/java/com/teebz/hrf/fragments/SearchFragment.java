@@ -3,7 +3,7 @@ package com.teebz.hrf.fragments;
 import com.teebz.hrf.R;
 import com.teebz.hrf.entities.SearchResult;
 import com.teebz.hrf.listeners.SearchListItemClickListener;
-import com.teebz.hrf.searchparsers.RuleSearcher;
+import com.teebz.hrf.searchparsers.RuleDataServices;
 
 import android.app.Activity;
 import android.content.Context;
@@ -30,7 +30,7 @@ public class SearchFragment extends android.app.Fragment {
     private static final String PREVIOUS_SEARCH_TERM = "previous_search_term";
 
     private List<SearchResult> mResults;
-    private RuleSearcher mRuleSearcher;
+    private RuleDataServices mRuleDataServices;
     private SearchListItemClickListener mItemClickListener;
     private EditText mEditTextBox;
     private ListView mListView;
@@ -89,7 +89,7 @@ public class SearchFragment extends android.app.Fragment {
         //Inflate the fragment view
         View fragmentView = inflater.inflate(R.layout.search_fragment, container, false);
 
-        mRuleSearcher = RuleSearcher.getSearcher(fragmentView.getContext().getAssets());
+        mRuleDataServices = RuleDataServices.getRuleDataServices(fragmentView.getContext());
         mEditTextBox = (EditText)fragmentView.findViewById(R.id.txtSearch);
         mListView = (ListView)fragmentView.findViewById(R.id.searchListView);
 
@@ -125,7 +125,7 @@ public class SearchFragment extends android.app.Fragment {
                 SearchResult sr = mResults.get(position);
 
                 //Alert our parent that a click happened.
-                mItemClickListener.onSearchListItemClick(view, position, sr.ruleMatch.id, getSearchTerm());
+                mItemClickListener.onSearchListItemClick(view, position, sr.ruleMatch.getRID(), getSearchTerm());
             }
         });
 
@@ -168,7 +168,7 @@ public class SearchFragment extends android.app.Fragment {
     }
 
     private void updateSearchResults() {
-        mResults = mRuleSearcher.searchRules(getSearchTerm());
+        mResults = mRuleDataServices.searchRules(getSearchTerm());
         View rootView = mEditTextBox.getRootView();
         populateListView(rootView);
     }
@@ -193,13 +193,13 @@ public class SearchFragment extends android.app.Fragment {
             txtRuleContents.setText(htmlContents);
 
             TextView txtRuleId = (TextView)itemView.findViewById(R.id.ruleNumberView);
-            txtRuleId.setText(current.ruleMatch.id);
+            txtRuleId.setText(current.ruleMatch.getNum());
 
             TextView txtSectionName = (TextView)itemView.findViewById(R.id.ruleSectionView);
-            txtSectionName.setText(current.sectionMatch.name);
+            txtSectionName.setText(current.sectionMatch.getName());
 
             TextView txtRuleName = (TextView)itemView.findViewById(R.id.ruleTitleView);
-            txtRuleName.setText(current.ruleMatch.name);
+            txtRuleName.setText(current.ruleMatch.getName());
 
             return itemView;
         }

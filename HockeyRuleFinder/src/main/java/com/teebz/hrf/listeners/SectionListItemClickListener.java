@@ -7,5 +7,5 @@ public interface SectionListItemClickListener {
      * This method will be invoked when an item in the ListFragment is
      * clicked
      */
-    void onSectionListItemClick(View view, int position, String sectionId);
+    void onSectionListItemClick(View view, int position, int sectionId);
 }

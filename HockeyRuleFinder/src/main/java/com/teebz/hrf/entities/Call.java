@@ -7,13 +7,13 @@ public class Call implements Serializable {
     public final String name;
     public final String desc;
     public final String imgName;
-    public final String assocRuleId;
+    public final String assocRuleNum;
 
-    public Call(String id, String name, String desc, String imgName, String assocRuleId) {
+    public Call(String id, String name, String desc, String imgName, String assocRuleNum) {
         this.id = id;
         this.name = name;
         this.desc = desc;
-        this.assocRuleId = assocRuleId;
+        this.assocRuleNum = assocRuleNum;
         this.imgName = imgName;
     }
 }

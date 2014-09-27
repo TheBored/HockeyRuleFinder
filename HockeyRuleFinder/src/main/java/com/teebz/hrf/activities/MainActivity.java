@@ -101,24 +101,25 @@ public class MainActivity extends HRFActivity
     }
 
     @Override
-    public void onSectionListItemClick(View view, int position, String sectionId) {
+    public void onSectionListItemClick(View view, int position, int sectionId) {
         Intent newActivity = new Intent(view.getContext(), RuleListActivity.class);
         newActivity.putExtra(RuleListActivity.RULES_LIST_KEY, sectionId);
         startActivity(newActivity);
     }
 
     @Override
-    public void onQuickRefListItemClick(View view, int position, String ruleId) {
-        Rule clickedRule = searcher.getRuleById(ruleId);
+    public void onQuickRefListItemClick(View view, int position, String ruleNum) {
+        //Quick ref links by rule num, can't supply an ID.
+        Rule clickedRule = ruleDataServices.getRuleByNum(ruleNum, getLeagueId());
         Intent newActivity = new Intent(view.getContext(), RuleDetailActivity.class);
         newActivity.putExtra(RuleDetailFragment.RULES_DETAIL_KEY, clickedRule);
         startActivity(newActivity);
     }
 
     @Override
-    public void onSearchListItemClick(View view, int position, String ruleId, String highlightText) {
+    public void onSearchListItemClick(View view, int position, int ruleId, String highlightText) {
         Intent newActivity = new Intent(this, RuleDetailActivity.class);
-        newActivity.putExtra(RuleDetailFragment.RULES_DETAIL_KEY, searcher.getRuleById(ruleId));
+        newActivity.putExtra(RuleDetailFragment.RULES_DETAIL_KEY, ruleDataServices.getRuleById(ruleId));
         newActivity.putExtra(RuleDetailFragment.RULES_DETAIL_SEARCH_TERM, highlightText);
         startActivity(newActivity);
     }

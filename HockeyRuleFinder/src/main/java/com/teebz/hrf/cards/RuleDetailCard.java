@@ -3,7 +3,7 @@ package com.teebz.hrf.cards;
 import com.teebz.hrf.Helpers;
 import com.teebz.hrf.R;
 import com.teebz.hrf.entities.Rule;
-import com.teebz.hrf.searchparsers.RuleSearcher;
+import com.teebz.hrf.searchparsers.RuleDataServices;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -44,14 +44,14 @@ public class RuleDetailCard extends Card {
     @Override
     public void setupInnerViewElements(ViewGroup parent, View view) {
         String txtContents = "";
-        for (String paragraph : mRule.htmlContents) {
+        for (String paragraph : mRule.getHtmlContents()) {
             if (!txtContents.isEmpty()) {
                 txtContents += "<br /><br />";
             }
 
             String p = paragraph;
             if (mHighlightText != null && !mHighlightText.isEmpty()){
-                p = RuleSearcher.getHighlightedText(paragraph, mHighlightText, false);
+                p = RuleDataServices.getHighlightedText(paragraph, mHighlightText, false);
             }
 
             txtContents += p;
@@ -59,11 +59,8 @@ public class RuleDetailCard extends Card {
         txtContents += "<br />"; //After we put in all the text, add one more newline for spacing.
 
         //With the links prepared, set the ID and Name fields
-        //TextView txtRuleId = (TextView)view.findViewById(R.id.ruleNumberView);
-        //txtRuleId.setText(mRule.id);
-
         TextView txtRuleName = (TextView)view.findViewById(R.id.ruleTitleView);
-        txtRuleName.setText(mRule.id + " - " + mRule.name);
+        txtRuleName.setText(mRule.getNum() + " - " + mRule.getName());
 
         //Last, show the rule text. We need to parse out images and show them separately, so
         //run the parse and inflate views as needed.

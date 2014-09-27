@@ -13,6 +13,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
 public class RuleXMLParser extends BaseParser {
     public RuleXMLParser(InputStream in) {
         super(in);
@@ -58,7 +63,13 @@ public class RuleXMLParser extends BaseParser {
         }
 
         sectionrules = rules.toArray(new Rule[rules.size()]);
-        return new Section(id, sectionname, sectionrules);
+
+        Section s = new Section();
+        s.setNum(id);
+        s.setName(sectionname);
+        s.setRules(sectionrules);
+
+        return s;
     }
 
     private Rule readRule() throws XmlPullParserException, IOException {
@@ -87,7 +98,14 @@ public class RuleXMLParser extends BaseParser {
             }
         }
 
-        return new Rule(id, rulename, paragraphs, plainToSearchable(paragraphs), plainToHTML(paragraphs), rules, img);
+        Rule r = new Rule();
+        r.setNum(id);
+        r.setName(rulename);
+        r.setPureContents(paragraphs);
+        r.setSubRules(rules);
+        r.setImgName(img);
+
+        return r;
     }
 
     private String readParagraph() throws XmlPullParserException, IOException {

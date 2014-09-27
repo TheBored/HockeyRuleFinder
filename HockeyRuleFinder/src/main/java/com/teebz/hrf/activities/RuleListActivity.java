@@ -29,14 +29,14 @@ public class RuleListActivity extends HRFActivity {
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            String sectionId;
+            int sectionId;
             if (extras.containsKey(HRF_LOAD_ID)) { //We navigated "Up" to get here.
-                sectionId = extras.getString(HRF_LOAD_ID);
+                sectionId = extras.getInt(HRF_LOAD_ID);
             } else { //We navigated here from the section list.
-                sectionId = extras.getString(RuleListActivity.RULES_LIST_KEY);
+                sectionId = extras.getInt(RuleListActivity.RULES_LIST_KEY);
             }
-            mSection = searcher.getSectionById(sectionId);
-            mRules = searcher.getRulesBySectionId(sectionId);
+            mSection = ruleDataServices.getSectionById(sectionId);
+            mRules = ruleDataServices.getRulesBySectionId(sectionId);
         }
 
         if (savedInstanceState != null) {
@@ -50,13 +50,13 @@ public class RuleListActivity extends HRFActivity {
                 .commit();
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setTitle(mSection.name);
+        getActionBar().setTitle(mSection.getName());
     }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putString("SectionId", mSection.id);
+        savedInstanceState.putInt("SectionId", mSection.getSID());
     }
 
     @Override

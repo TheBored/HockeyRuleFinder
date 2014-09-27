@@ -4,11 +4,12 @@ import com.teebz.hrf.R;
 import com.teebz.hrf.entities.Rule;
 import com.teebz.hrf.entities.Section;
 import com.teebz.hrf.listeners.SectionListItemClickListener;
-import com.teebz.hrf.searchparsers.RuleSearcher;
+import com.teebz.hrf.searchparsers.RuleDataServices;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.widget.ListViewAutoScrollHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SectionListFragment extends android.app.Fragment {
@@ -40,8 +43,9 @@ public class SectionListFragment extends android.app.Fragment {
         catch (Exception e) {
             Toast.makeText(activity.getBaseContext(), "Click listener failed", Toast.LENGTH_LONG).show();
         }
-        RuleSearcher searcher = RuleSearcher.getSearcher(getActivity().getAssets());
-        mSections = searcher.getSections();
+
+        RuleDataServices rds = RuleDataServices.getRuleDataServices(activity.getBaseContext());
+        mSections = rds.getAllSections();
     }
 
     @Override
@@ -81,7 +85,7 @@ public class SectionListFragment extends android.app.Fragment {
                 Section s = mSections.get(position);
 
                 //Alert our parent that a click happened.
-                mItemClickListener.onSectionListItemClick(view, position, s.id);
+                mItemClickListener.onSectionListItemClick(view, position, s.getSID());
             }
         });
 
@@ -102,18 +106,18 @@ public class SectionListFragment extends android.app.Fragment {
             Section current = mSections.get(position);
 
             TextView txtSectionName = (TextView)itemView.findViewById(R.id.txtSectionName);
-            txtSectionName.setText(current.name);
+            txtSectionName.setText(current.getName());
 
             //Get the range of rules within this one.
-            Rule first = current.rules[0];
-            Rule last = current.rules[current.rules.length - 1];
+            Rule first = current.getRules()[0];
+            Rule last = current.getRules()[current.getRules().length - 1];
             String range = "";
 
             TextView txtSectionRange = (TextView)itemView.findViewById(R.id.txtSectionRange);
-            if (first.id.equals("PREFIX")) {
-                range = first.id + " - Rule " + last.id;
+            if (first.getNum().equals("PREFIX")) {
+                range = first.getNum() + " - Rule " + last.getNum();
             } else {
-                range = "Rules " + first.id + " - " + last.id;
+                range = "Rules " + first.getNum() + " - " + last.getNum();
             }
             txtSectionRange.setText(range);
 

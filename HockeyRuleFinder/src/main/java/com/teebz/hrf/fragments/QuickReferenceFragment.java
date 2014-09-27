@@ -86,7 +86,7 @@ public class QuickReferenceFragment extends android.app.Fragment {
                 Call c = mCalls.get(position);
 
                 //Alert our parent that a click happened.
-                mItemClickListener.onQuickRefListItemClick(view, position, c.assocRuleId);
+                mItemClickListener.onQuickRefListItemClick(view, position, c.assocRuleNum);
             }
         });
     }

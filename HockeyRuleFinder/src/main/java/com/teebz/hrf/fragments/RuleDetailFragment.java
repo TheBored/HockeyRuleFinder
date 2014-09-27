@@ -3,7 +3,7 @@ package com.teebz.hrf.fragments;
 import com.teebz.hrf.R;
 import com.teebz.hrf.cards.RuleDetailCard;
 import com.teebz.hrf.entities.Rule;
-import com.teebz.hrf.searchparsers.RuleSearcher;
+import com.teebz.hrf.searchparsers.RuleDataServices;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -25,9 +25,9 @@ public class RuleDetailFragment extends android.app.Fragment {
     private CardListView mDetailList;
     private ArrayList<Card> mCardList;
     private String mHighlightText;
-    private String mRuleTarget;
+    private int mRuleTarget;
 
-    public static RuleDetailFragment newInstance(Rule rule, String highlightText, String ruleTarget) {
+    public static RuleDetailFragment newInstance(Rule rule, String highlightText, int ruleTarget) {
         RuleDetailFragment fragment = new RuleDetailFragment();
         fragment.setData(rule, highlightText, ruleTarget);
         return fragment;
@@ -40,11 +40,11 @@ public class RuleDetailFragment extends android.app.Fragment {
         //If we are coming back with a valid instance state, take that.
         if (savedInstanceState != null) {
             mHighlightText = savedInstanceState.getString("HighlightText");
-            mRuleTarget = savedInstanceState.getString("RuleTarget");
-            String ruleId = savedInstanceState.getString("RuleId");
+            mRuleTarget = savedInstanceState.getInt("RuleTarget");
+            int ruleId = savedInstanceState.getInt("RuleId");
 
-            RuleSearcher rs = RuleSearcher.getSearcher(getActivity().getAssets());
-            mRule = rs.getRuleById(ruleId);
+            RuleDataServices ruleDataServices = RuleDataServices.getRuleDataServices(getActivity().getBaseContext());
+            mRule = ruleDataServices.getRuleById(ruleId);
         }
         // retain this fragment
         setRetainInstance(true);
@@ -59,9 +59,9 @@ public class RuleDetailFragment extends android.app.Fragment {
         populateListView(rootView);
 
         //If we have a rule target, we want the list to auto scroll to that rule specifically.
-        if (mRuleTarget != null) {
-            for (int i = 0; i < mRule.subRules.size(); i++) {
-                if (mRule.subRules.get(i).id.equals(mRuleTarget)) {
+        if (mRuleTarget != -1) {
+            for (int i = 0; i < mRule.getSubRules().size(); i++) {
+                if (mRule.getSubRules().get(i).getRID().equals(mRuleTarget)) {
                     mDetailList.setSelection(i);
                 }
             }
@@ -74,11 +74,11 @@ public class RuleDetailFragment extends android.app.Fragment {
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putString("HighlightText", mHighlightText);
-        savedInstanceState.putString("RuleTarget", mRuleTarget);
-        savedInstanceState.putString("RuleId", mRule.id);
+        savedInstanceState.putInt("RuleTarget", mRuleTarget);
+        savedInstanceState.putInt("RuleId", mRule.getRID());
     }
 
-    public void setData(Rule rule, String highlightText, String ruleTarget) {
+    public void setData(Rule rule, String highlightText, int ruleTarget) {
         this.mRule = rule;
         this.mHighlightText = highlightText;
         this.mRuleTarget = ruleTarget;
@@ -97,7 +97,7 @@ public class RuleDetailFragment extends android.app.Fragment {
         if (context != null) {
             mCardList = new ArrayList<Card>();
 
-            for(Rule r : mRule.subRules) {
+            for(Rule r : mRule.getSubRules()) {
                 RuleDetailCard card = new RuleDetailCard(context);
                 card.setDetails(r, mHighlightText);
                 mCardList.add(card);

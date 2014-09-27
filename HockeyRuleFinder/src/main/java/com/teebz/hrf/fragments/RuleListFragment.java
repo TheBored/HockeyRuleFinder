@@ -54,8 +54,9 @@ public class RuleListFragment extends android.app.Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Rule current = mRules.get(position);
 
+                //TODO: Potentially not correct for other leagues.
                 //If this is rule 29 (Signals) then we want to send the user to the quick reference page
-                if (current.id.equals("29")) {
+                if (current.getNum().equals("29")) {
                     Intent newActivity = new Intent(getActivity(), QuickReferenceActivity.class);
                     startActivity(newActivity);
                 }
@@ -92,13 +93,13 @@ public class RuleListFragment extends android.app.Fragment {
             Rule current = mRules.get(position);
 
             TextView txtSectionName = (TextView)itemView.findViewById(R.id.txtRuleName);
-            txtSectionName.setText(current.name);
+            txtSectionName.setText(current.getName());
 
             TextView txtSectionId = (TextView)itemView.findViewById(R.id.txtRuleId);
-            if (current.id.equals("PREFIX")) {
-                txtSectionId.setText(current.id);
+            if (current.getNum().equals("PREFIX")) {
+                txtSectionId.setText(current.getNum());
             } else {
-                txtSectionId.setText("Rule " + current.id);
+                txtSectionId.setText("Rule " + current.getNum());
             }
 
             return itemView;

@@ -12,7 +12,7 @@ public class QuickReferenceActivity extends HRFActivity
     public static final String QUICK_REF_KEY = "QUICK_REF_KEY";
 
     @Override
-    public void onQuickRefListItemClick(View view, int position, String ruleId) {
+    public void onQuickRefListItemClick(View view, int position, String ruleNum) {
         //Something was clicked in the reference list and is sending us a list of rules to
         //display on the right pane. Forward the rules onto the fragment & refresh.
     }
