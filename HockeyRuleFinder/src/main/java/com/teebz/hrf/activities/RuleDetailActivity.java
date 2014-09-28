@@ -32,9 +32,16 @@ public class RuleDetailActivity extends HRFActivity {
         Bundle extras = getIntent().getExtras();
         Uri data = getIntent().getData();
 
+        //Set defaults
         mHighlightText = null;
         int ruleTarget = -1;
-        if (data != null) { //We came from a link
+
+        /*
+         * Possible entry points: Link, Action, reload from memory. Check each one if the previous was
+         * not successful.
+         */
+        //Coming from link
+        if (data != null) {
             String[] uriComponents = data.toString().split("//");
             String ruleNum = uriComponents[uriComponents.length - 1];
 
@@ -46,26 +53,28 @@ public class RuleDetailActivity extends HRFActivity {
             if (mRule.getSubRules() == null || mRule.getSubRules().size() == 0){ //We don't have children, go get our parent.
                 mRule = mRuleDataServices.getParentRuleByNum(ruleNum, getLeagueId());
             }
-        } else if (extras != null) { //We came from an action
+        }
+
+        //Coming from action.
+        if (mRule == null && extras != null) {
             mRule = (Rule)extras.getSerializable(RuleDetailFragment.RULES_DETAIL_KEY);
             mHighlightText = extras.getString(RuleDetailFragment.RULES_DETAIL_SEARCH_TERM);
-        } else if (savedInstanceState != null) {
+        }
+
+        //Coming from saved state.
+        if (mRule == null && savedInstanceState != null) {
             //Something happened that killed our state. Reload!
             mRule = (Rule)savedInstanceState.getSerializable(RuleDetailFragment.RULES_DETAIL_KEY);
             mHighlightText = savedInstanceState.getString(RuleDetailFragment.RULES_DETAIL_SEARCH_TERM);
         }
-        // else: Should not be valid, where did we come from?
 
         //Have our info, reload the fragment.
         getFragmentManager().beginTransaction()
                 .add(R.id.ruleDetailMain, RuleDetailFragment.newInstance(mRule, mHighlightText, ruleTarget))
                 .commit();
 
-        ActionBar bar = getActionBar();
-        if (bar != null) {
-            getActionBar().setDisplayHomeAsUpEnabled(true);
-            getActionBar().setTitle(mRule.getName());
-        }
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setTitle(mRule.getName());
     }
 
     @Override
