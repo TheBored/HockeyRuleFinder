@@ -1,6 +1,6 @@
 package com.teebz.hrf.cards;
 
-import com.teebz.hrf.Helpers;
+import com.teebz.hrf.helpers.ApplicationHelper;
 import com.teebz.hrf.R;
 import com.teebz.hrf.entities.Rule;
 import com.teebz.hrf.searchparsers.RuleDataServices;
@@ -91,8 +91,8 @@ public class RuleDetailCard extends Card {
                 if (imageIndex != -1) {
                     ImageView iv = (ImageView)inflater.inflate(R.layout.rule_detail_image, parent, false);
                     String imgTag = txtContents.substring(imageIndex + 7,endIndex);
-                    Drawable img = Helpers.getDrawableFromAssets(view.getContext(),
-                            Helpers.DIAGRAM_IMGS_FOLDER,
+                    Drawable img = ApplicationHelper.getDrawableFromAssets(view.getContext(),
+                            ApplicationHelper.DIAGRAM_IMGS_FOLDER,
                             imgTag,
                             ".png");
 
@@ -113,11 +113,11 @@ public class RuleDetailCard extends Card {
                     iv.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Helpers.showLargeImage(mContext,
+                            ApplicationHelper.showLargeImage(mContext,
                                     view.getTag().toString(),
                                     mContext.getResources()
                                             .getString(R.string.diagram_detail_header),
-                                    Helpers.DIAGRAM_IMGS_FOLDER);
+                                    ApplicationHelper.DIAGRAM_IMGS_FOLDER);
                         }
                     });
                     layout.addView(iv);

@@ -1,6 +1,6 @@
 package com.teebz.hrf.fragments;
 
-import com.teebz.hrf.Helpers;
+import com.teebz.hrf.helpers.ApplicationHelper;
 import com.teebz.hrf.R;
 import com.teebz.hrf.activities.SingleImageActivity;
 import com.teebz.hrf.entities.Call;
@@ -98,7 +98,7 @@ public class QuickReferenceFragment extends android.app.Fragment {
         Intent newActivity = new Intent(getActivity(), SingleImageActivity.class);
         newActivity.putExtra(SingleImageActivity.SINGLE_IMAGE_KEY, c.imgName);
         newActivity.putExtra(SingleImageActivity.SINGLE_IMAGE_TITLE, c.name);
-        newActivity.putExtra(SingleImageActivity.SINGLE_IMAGE_FOLDER, Helpers.CALL_IMGS_FOLDER);
+        newActivity.putExtra(SingleImageActivity.SINGLE_IMAGE_FOLDER, ApplicationHelper.CALL_IMGS_FOLDER);
 
         startActivity(newActivity);
     }
@@ -131,10 +131,10 @@ public class QuickReferenceFragment extends android.app.Fragment {
 
             //If this call does not have an image, handle it differently.
             if (!imageName.equals("NO SIGNAL")) {
-                Drawable d = Helpers.getDrawableFromAssets(getContext(),
-                                                           Helpers.CALL_IMGS_FOLDER,
-                                                           imageName,
-                                                           ".png");
+                Drawable d = ApplicationHelper.getDrawableFromAssets(getContext(),
+                        ApplicationHelper.CALL_IMGS_FOLDER,
+                        imageName,
+                        ".png");
                 quickRefImageBtn.setImageDrawable(d);
             }
             else {
@@ -146,10 +146,10 @@ public class QuickReferenceFragment extends android.app.Fragment {
                 @Override
                 public void onClick(View view) {
                     Call c = mCallSearcher.getCallByCallId(view.getTag().toString());
-                    Helpers.showLargeImage(getActivity(),
-                                           c.imgName,
-                                           c.name,
-                                           Helpers.CALL_IMGS_FOLDER);
+                    ApplicationHelper.showLargeImage(getActivity(),
+                            c.imgName,
+                            c.name,
+                            ApplicationHelper.CALL_IMGS_FOLDER);
                 }
             });
 

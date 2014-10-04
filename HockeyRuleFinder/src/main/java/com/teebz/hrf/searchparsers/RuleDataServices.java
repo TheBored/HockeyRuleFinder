@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
+import com.teebz.hrf.entities.League;
 import com.teebz.hrf.entities.Rule;
 import com.teebz.hrf.entities.SearchResult;
 import com.teebz.hrf.entities.Section;
@@ -43,7 +44,39 @@ public class RuleDataServices {
     }
 
     //region Public methods
-    public ArrayList<Section> getAllSections() {
+    public ArrayList<League> getAllLeagues() {
+        ArrayList<League> leagues = new ArrayList<League>();
+
+        dbOpen();
+        Cursor cursor = mDatabase.query(DBHelper.TABLE_LEAGUE,
+                DBHelper.LEAGUE_COLUMNS, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            League league = cursorToLeague(cursor);
+            leagues.add(league);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        dbClose();
+
+        return leagues;
+    }
+
+    public League getLeagueByAcronym(String acronym) {
+        dbOpen();
+        Cursor cursor = mDatabase.query(DBHelper.TABLE_LEAGUE,
+                DBHelper.LEAGUE_COLUMNS, "acronym='"+acronym+"'", null, null, null, null);
+
+        cursor.moveToFirst();
+        League league = cursorToLeague(cursor);
+        cursor.close();
+        dbClose();
+
+        return league;
+    }
+
+    public ArrayList<Section> getAllSections(int leagueId) {
         ArrayList<Section> sections = new ArrayList<Section>();
 
         //File file = new File("/data/data/com.teebz.hrf/databases/rules.sqlite");
@@ -51,7 +84,7 @@ public class RuleDataServices {
 
         dbOpen();
         Cursor cursor = mDatabase.query(DBHelper.TABLE_SECTION,
-                DBHelper.SECTION_COLUMNS, null, null, null, null, null);
+                DBHelper.SECTION_COLUMNS, "league_id="+leagueId, null, null, null, null);
 
         //Create the (empty) section elements here
         cursor.moveToFirst();
@@ -199,11 +232,11 @@ public class RuleDataServices {
         return getRuleById(rule.getParent_RID());
     }
 
-    public List<SearchResult> searchRules(String text) {
+    public List<SearchResult> searchRules(String text, int leagueId) {
         //TODO: Database search? Is that possible?
         List<SearchResult> results = new ArrayList<SearchResult>();
 
-        ArrayList<Section> sections = getAllSections();
+        ArrayList<Section> sections = getAllSections(leagueId);
 
         if (text.isEmpty()) {
             return results; //No search text = no results.
@@ -289,6 +322,14 @@ public class RuleDataServices {
         if (mDatabaseRequests == 0) {
             mDatabase.close();
         }
+    }
+
+    private League cursorToLeague(Cursor cursor) {
+        League l = new League();
+        l.setLID(cursor.getInt(0));
+        l.setName(cursor.getString(1));
+        l.setAcronym(cursor.getString(2));
+        return l;
     }
 
     private Section cursorToSection(Cursor cursor) {

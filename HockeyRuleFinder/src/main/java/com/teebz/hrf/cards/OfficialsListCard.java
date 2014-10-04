@@ -1,6 +1,6 @@
 package com.teebz.hrf.cards;
 
-import com.teebz.hrf.Helpers;
+import com.teebz.hrf.helpers.ApplicationHelper;
 import com.teebz.hrf.R;
 import com.teebz.hrf.entities.Official;
 import com.teebz.hrf.listeners.OfficialsListItemClickListener;
@@ -49,8 +49,8 @@ public class OfficialsListCard extends Card {
         txtNumber.setText("#" + mOfficial.number);
 
         ImageView officialImg = (ImageView)view.findViewById(R.id.officialImageView);
-        Drawable img = Helpers.getDrawableFromAssets(getContext(),
-                Helpers.OFFICIAL_IMGS_FOLDER,
+        Drawable img = ApplicationHelper.getDrawableFromAssets(getContext(),
+                ApplicationHelper.OFFICIAL_IMGS_FOLDER,
                 mOfficial.number,
                 ".jpg");
 

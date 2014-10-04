@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends HRFActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
@@ -180,6 +181,11 @@ public class MainActivity extends HRFActivity
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
+    }
+
+    public void settingsClick(View v) {
+        Intent newActivity = new Intent(getBaseContext(), SettingsActivity.class);
+        startActivity(newActivity);
     }
 
     @Override

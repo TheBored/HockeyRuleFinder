@@ -1,6 +1,7 @@
 package com.teebz.hrf.fragments;
 
 import com.teebz.hrf.R;
+import com.teebz.hrf.activities.HRFActivity;
 import com.teebz.hrf.entities.Rule;
 import com.teebz.hrf.entities.Section;
 import com.teebz.hrf.listeners.SectionListItemClickListener;
@@ -45,7 +46,8 @@ public class SectionListFragment extends android.app.Fragment {
         }
 
         RuleDataServices rds = RuleDataServices.getRuleDataServices(activity.getBaseContext());
-        mSections = rds.getAllSections();
+        HRFActivity parentActivity = (HRFActivity)activity;
+        mSections = rds.getAllSections(parentActivity.getLeagueId());
     }
 
     @Override

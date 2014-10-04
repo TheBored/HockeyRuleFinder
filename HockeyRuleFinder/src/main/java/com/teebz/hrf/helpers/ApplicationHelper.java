@@ -1,4 +1,4 @@
-package com.teebz.hrf;
+package com.teebz.hrf.helpers;
 
 import com.teebz.hrf.activities.SingleImageActivity;
 
@@ -10,7 +10,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class Helpers {
+public class ApplicationHelper {
 
     public static final String CALL_IMGS_FOLDER = "call_imgs/";
     public static final String OFFICIAL_IMGS_FOLDER = "official_imgs/";

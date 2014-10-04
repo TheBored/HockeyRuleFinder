@@ -1,6 +1,6 @@
 package com.teebz.hrf.cards;
 
-import com.teebz.hrf.Helpers;
+import com.teebz.hrf.helpers.ApplicationHelper;
 import com.teebz.hrf.R;
 import com.teebz.hrf.entities.Official;
 
@@ -34,8 +34,8 @@ public class SingleOfficialCard extends Card {
     @Override
     public void setupInnerViewElements(ViewGroup parent, View view) {
         ImageView imgView = (ImageView)view.findViewById(R.id.officialImageView);
-        Drawable img = Helpers.getDrawableFromAssets(mContext,
-                Helpers.OFFICIAL_IMGS_FOLDER,
+        Drawable img = ApplicationHelper.getDrawableFromAssets(mContext,
+                ApplicationHelper.OFFICIAL_IMGS_FOLDER,
                 mOfficial.number,
                 ".jpg");
 

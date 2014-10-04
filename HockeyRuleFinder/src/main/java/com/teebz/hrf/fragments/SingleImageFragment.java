@@ -1,6 +1,6 @@
 package com.teebz.hrf.fragments;
 
-import com.teebz.hrf.Helpers;
+import com.teebz.hrf.helpers.ApplicationHelper;
 import com.teebz.hrf.R;
 import com.teebz.hrf.TouchImageView;
 
@@ -42,10 +42,10 @@ public class SingleImageFragment extends android.app.Fragment {
         View fragmentView = inflater.inflate(R.layout.single_image_fragment, container, false);
 
         TouchImageView imgView = (TouchImageView)fragmentView;
-        Drawable img = Helpers.getDrawableFromAssets(container.getContext(),
-                                                     mFolder,
-                                                     mImageName,
-                                                     ".png");
+        Drawable img = ApplicationHelper.getDrawableFromAssets(container.getContext(),
+                mFolder,
+                mImageName,
+                ".png");
         imgView.setImageDrawable(img);
         imgView.setBackgroundColor(Color.WHITE);
 

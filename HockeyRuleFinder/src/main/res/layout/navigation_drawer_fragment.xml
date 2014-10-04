@@ -1,10 +1,60 @@
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.teebz.hrf.fragments.NavigationDrawerFragment"
-    android:id="@+id/navDrawerFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:choiceMode="singleChoice"
-    android:divider="?attr/listRowDividerColor"
-    android:dividerHeight="1dp"
-    android:background="?attr/listRowBGColor" />
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:id="@+id/navDrawerFragmentRoot">
+
+    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/navDrawerFragment"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:choiceMode="singleChoice"
+        android:divider="?attr/listRowDividerColor"
+        android:dividerHeight="1dp"
+        android:background="?attr/listRowBGColor" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/navDrawerSettingsParent"
+        android:onClick="settingsClick"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:id="@+id/navDrawerSettingsImage"
+            android:src="?attr/icon_settings"
+            android:paddingLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/navDrawerSettingsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:gravity="center_vertical"
+            android:text="Settings"
+            android:paddingLeft="8dp"
+            android:paddingTop="2dp"
+            android:layout_toRightOf="@+id/navDrawerSettingsImage" />
+
+        <TextView
+            android:id="@+id/navDrawerSettingsDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:gravity="center_vertical"
+            android:text="Change league or theme"
+            android:paddingLeft="8dp"
+            android:paddingBottom="8dp"
+            android:layout_below="@+id/navDrawerSettingsText"
+            android:layout_toRightOf="@+id/navDrawerSettingsImage"/>
+    </RelativeLayout>
+</RelativeLayout>

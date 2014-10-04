@@ -1,18 +1,21 @@
 package com.teebz.hrf.activities;
 
-import com.teebz.hrf.Helpers;
+import com.teebz.hrf.entities.League;
+import com.teebz.hrf.helpers.ApplicationHelper;
 import com.teebz.hrf.R;
+import com.teebz.hrf.helpers.PreferenceHelper;
 import com.teebz.hrf.searchparsers.RuleDataServices;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteCantOpenDatabaseException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -28,6 +31,7 @@ public class HRFActivity extends Activity {
     private static String DB_NAME = "rules.sqlite";
     private static String TEMP_DB_NAME = "tempRules.sqlite";
 
+    private int mLeagueId;
     protected boolean mShowMenu;
     protected UpMenuBehavior menuBehavior;
     protected RuleDataServices mRuleDataServices;
@@ -44,15 +48,20 @@ public class HRFActivity extends Activity {
         menuBehavior = UpMenuBehavior.None;
     }
 
-    protected int getLeagueId() {
+    public int getLeagueId() {
         //Return what league we are set to view.
-        return 1; //TODO: Don't hardcode league id.
+        return mLeagueId;
+    }
+
+    public void updateSetLeague() {
+        String leaguePreference = PreferenceHelper.getLeaguePreference(getBaseContext());
+        League league = mRuleDataServices.getLeagueByAcronym(leaguePreference);
+        mLeagueId = league.getLID();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mRuleDataServices = RuleDataServices.getRuleDataServices(getBaseContext());
 
         //First time we are running anything. Check and see if we need to copy the database over.
         try {
@@ -62,6 +71,10 @@ public class HRFActivity extends Activity {
         } catch (IOException e) {
             //Do nothing.
         }
+
+        //DB is good, establish the rule services and get/set our league pref.
+        mRuleDataServices = RuleDataServices.getRuleDataServices(getBaseContext());
+        updateSetLeague();
 
         //Check the theme preference here. Set if need be.
         if (isDarkTheme()) {
@@ -95,7 +108,7 @@ public class HRFActivity extends Activity {
                 startActivity(newActivity);
                 return true;
             case R.id.action_feedback:
-                return Helpers.startFeedbackEmail(this);
+                return ApplicationHelper.startFeedbackEmail(this);
             case android.R.id.home:
                 if (menuBehavior.equals(UpMenuBehavior.Finish)) {
                     finish();
@@ -117,8 +130,20 @@ public class HRFActivity extends Activity {
         String tempPath = DB_PATH + TEMP_DB_NAME;
         String version = null;
         try{
-            //Get the local (existing) version.
-            String localVersion = getDatabaseVersion(localPath);
+            //Before we do anything - check if we need to create the database folder.
+            File dir = new File(DB_PATH);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+
+            String localVersion = null;
+            try {
+                //Get the local (existing) version.
+                localVersion = getDatabaseVersion(localPath);
+            }
+            catch (Exception e) {
+                Log.d("HRFActivity", "Local database does not exist for version check.");
+            }
 
             //Copy the APK database over so we can easily open it for comparison.
             copyDatabase(tempPath);
@@ -128,10 +153,10 @@ public class HRFActivity extends Activity {
 
             //Now that we're done with the apk version of the database, delete it.
             File tmpDB = new File(tempPath);
-            tmpDB.delete();
+            Boolean delSuccess = tmpDB.delete();
 
             //Do the versions match?
-            return localVersion.equals(apkVersion);
+            return localVersion != null && localVersion.equals(apkVersion);
         }catch(Exception e){
             //Anything breaks above - copy the database.
             return false;

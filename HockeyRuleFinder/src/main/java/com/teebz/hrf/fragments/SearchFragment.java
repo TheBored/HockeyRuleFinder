@@ -1,6 +1,7 @@
 package com.teebz.hrf.fragments;
 
 import com.teebz.hrf.R;
+import com.teebz.hrf.activities.HRFActivity;
 import com.teebz.hrf.entities.SearchResult;
 import com.teebz.hrf.listeners.SearchListItemClickListener;
 import com.teebz.hrf.searchparsers.RuleDataServices;
@@ -168,7 +169,8 @@ public class SearchFragment extends android.app.Fragment {
     }
 
     private void updateSearchResults() {
-        mResults = mRuleDataServices.searchRules(getSearchTerm());
+        HRFActivity parentActivity = (HRFActivity)getActivity();
+        mResults = mRuleDataServices.searchRules(getSearchTerm(), parentActivity.getLeagueId());
         View rootView = mEditTextBox.getRootView();
         populateListView(rootView);
     }

@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -18,7 +20,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -48,6 +55,7 @@ public class NavigationDrawerFragment extends Fragment {
      */
     private ActionBarDrawerToggle mDrawerToggle;
 
+    private View mRootLayout;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerListView;
     private View mFragmentContainerView;
@@ -109,21 +117,33 @@ public class NavigationDrawerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        mDrawerListView = (ListView) inflater.inflate(
-                R.layout.navigation_drawer_fragment, container, false);
+
+        mRootLayout = inflater.inflate(R.layout.navigation_drawer_fragment, container, false);
+
+        mDrawerListView = (ListView)mRootLayout.findViewById(R.id.navDrawerFragment);
+
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectItem(position);
             }
         });
-        mDrawerListView.setAdapter(new ArrayAdapter<String>(
-                getActionBar().getThemedContext(),
-                R.layout.navigation_drawer_row,
-                R.id.navDrawerRow,
-                mMenuOptions));
+
+        /*
+        RelativeLayout settingsLayout = (RelativeLayout)mRootLayout.findViewById(R.id.navDrawerSettingsParent);
+        settingsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(mRootLayout.getContext(), "Woah", Toast.LENGTH_LONG);
+            }
+        });
+        */
+
+        NavigationDrawerListAdapter adapter = new NavigationDrawerListAdapter();
+
+        mDrawerListView.setAdapter(adapter);
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
-        return mDrawerListView;
+        return mRootLayout;
     }
 
     public boolean isDrawerOpen() {
@@ -278,5 +298,52 @@ public class NavigationDrawerFragment extends Fragment {
          * Called when an item in the navigation drawer is selected.
          */
         void onNavigationDrawerItemSelected(int position);
+    }
+
+    private class NavigationDrawerListAdapter extends ArrayAdapter<String> {
+        public NavigationDrawerListAdapter() {
+            super(getActivity(), R.layout.section_row, mMenuOptions);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View itemView = convertView;
+            if (itemView == null) {
+                itemView = getActivity().getLayoutInflater().inflate(R.layout.navigation_drawer_row, parent, false);
+            }
+
+            String current = mMenuOptions[position];
+
+            //Set the image for this row
+            int imageResource = 0;
+            //Lock the icon to the position in the menu. Not ideal but can refactor if needed.
+            switch(position) {
+                case 0:
+                    imageResource = R.attr.icon_star;
+                    break;
+                case 1:
+                    imageResource = R.attr.icon_browse;
+                    break;
+                case 2:
+                    imageResource = R.attr.icon_search;
+                    break;
+                case 3:
+                    imageResource = R.attr.icon_people;
+                    break;
+                default:
+                    break;
+            }
+
+            TypedArray a = getContext().getTheme().obtainStyledAttributes(new int[] { imageResource});
+            int attributeResourceId = a.getResourceId(0, 0);
+
+            ImageView imgView = (ImageView)itemView.findViewById(R.id.navDrawerRowImage);
+            imgView.setImageResource(attributeResourceId);
+
+            TextView txtSectionName = (TextView)itemView.findViewById(R.id.navDrawerRowText);
+            txtSectionName.setText(current);
+
+            return itemView;
+        }
     }
 }

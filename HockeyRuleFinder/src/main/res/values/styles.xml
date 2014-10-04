@@ -15,6 +15,12 @@
     <attr name="simpleRectBG" format="reference" />
     <attr name="listRowDivider" format="reference" />
 
+    <attr name="icon_settings" format="reference" />
+    <attr name="icon_star" format="reference" />
+    <attr name="icon_browse" format="reference" />
+    <attr name="icon_search" format="reference" />
+    <attr name="icon_people" format="reference" />
+
     <!-- Base application theme. -->
     <style name="HRFDarkTheme" parent="android:Theme.Holo">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
@@ -32,6 +38,12 @@
 
         <item name="simpleRectBG">@drawable/simple_rect_dark</item>
         <item name="listRowDivider">@drawable/padded_divider_dark</item>
+
+        <item name="icon_settings">@drawable/ic_settings_dark</item>
+        <item name="icon_star">@drawable/ic_star_dark</item>
+        <item name="icon_browse">@drawable/ic_browse_dark</item>
+        <item name="icon_search">@drawable/ic_search_dark</item>
+        <item name="icon_people">@drawable/ic_people_dark</item>
     </style>
 
     <style name="MyActionBar" parent="@android:style/Widget.Holo.ActionBar">
@@ -54,6 +66,12 @@
 
         <item name="simpleRectBG">@drawable/simple_rect_light</item>
         <item name="listRowDivider">@drawable/padded_divider_light</item>
+
+        <item name="icon_settings">@drawable/ic_settings_light</item>
+        <item name="icon_star">@drawable/ic_star_light</item>
+        <item name="icon_browse">@drawable/ic_browse_light</item>
+        <item name="icon_search">@drawable/ic_search_light</item>
+        <item name="icon_people">@drawable/ic_people_light</item>
     </style>
 
     <style name="HRFTitle">
