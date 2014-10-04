@@ -1,5 +1,6 @@
 package com.teebz.hrf.activities;
 
+import com.crashlytics.android.Crashlytics;
 import com.teebz.hrf.R;
 import com.teebz.hrf.entities.Rule;
 import com.teebz.hrf.entities.Section;
@@ -68,13 +69,28 @@ public class RuleDetailActivity extends HRFActivity {
             mHighlightText = savedInstanceState.getString(RuleDetailFragment.RULES_DETAIL_SEARCH_TERM);
         }
 
-        //Have our info, reload the fragment.
-        getFragmentManager().beginTransaction()
-                .add(R.id.ruleDetailMain, RuleDetailFragment.newInstance(mRule, mHighlightText, ruleTarget))
-                .commit();
+        if (mRule != null) {
+            getFragmentManager().beginTransaction()
+                    .add(R.id.ruleDetailMain, RuleDetailFragment.newInstance(mRule, mHighlightText, ruleTarget))
+                    .commit();
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setTitle(mRule.getName());
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+            getActionBar().setTitle(mRule.getName());
+        }
+        else { //If mRule is still null, we have a problem.
+            //Save some info so we can figure out whats going on.
+            Crashlytics.setString("HighlightText", mHighlightText);
+            Crashlytics.setInt("RuleTarget", ruleTarget);
+            Crashlytics.setString("IntentData", data != null ? data.toString() : "No Intent Data");
+            Crashlytics.setString("BundleExtras", extras != null ? "Exists" : "Does not exist");
+            Crashlytics.logException(new Exception("mRule is null during RuleDetailActivity load."));
+
+            //App was going to crash, restart back at the main menu. Exception was logged and sent to me though.
+            Intent i = getBaseContext().getPackageManager()
+                    .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+        }
     }
 
     @Override
