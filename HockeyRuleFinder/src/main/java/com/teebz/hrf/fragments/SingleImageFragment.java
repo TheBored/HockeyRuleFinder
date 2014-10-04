@@ -21,7 +21,7 @@ public class SingleImageFragment extends android.app.Fragment {
         return fragment;
     }
 
-    private SingleImageFragment() {}
+    public SingleImageFragment() {}
 
     public void setData(String imgName, String folder) {
         this.mImageName = imgName;
