@@ -44,10 +44,6 @@ public class SectionListFragment extends android.app.Fragment {
         catch (Exception e) {
             Toast.makeText(activity.getBaseContext(), "Click listener failed", Toast.LENGTH_LONG).show();
         }
-
-        RuleDataServices rds = RuleDataServices.getRuleDataServices(activity.getBaseContext());
-        HRFActivity parentActivity = (HRFActivity)activity;
-        mSections = rds.getAllSections(parentActivity.getLeagueId());
     }
 
     @Override
@@ -55,6 +51,11 @@ public class SectionListFragment extends android.app.Fragment {
                              Bundle savedInstanceState) {
         //Inflate the fragment view
         View fragmentView = inflater.inflate(R.layout.section_list_fragment, container, false);
+
+        //Load the relevant data.
+        RuleDataServices rds = RuleDataServices.getRuleDataServices(getActivity().getBaseContext());
+        HRFActivity parentActivity = (HRFActivity)getActivity();
+        mSections = rds.getAllSections(parentActivity.getLeagueId());
 
         //Add items to the list & click events.
         populateListView(fragmentView);
@@ -110,18 +111,8 @@ public class SectionListFragment extends android.app.Fragment {
             TextView txtSectionName = (TextView)itemView.findViewById(R.id.txtSectionName);
             txtSectionName.setText(current.getName());
 
-            //Get the range of rules within this one.
-            Rule first = current.getRules()[0];
-            Rule last = current.getRules()[current.getRules().length - 1];
-            String range = "";
-
             TextView txtSectionRange = (TextView)itemView.findViewById(R.id.txtSectionRange);
-            if (first.getNum().equals("PREFIX")) {
-                range = first.getNum() + " - Rule " + last.getNum();
-            } else {
-                range = "Rules " + first.getNum() + " - " + last.getNum();
-            }
-            txtSectionRange.setText(range);
+            txtSectionRange.setText(current.getRuleRange());
 
             return itemView;
         }

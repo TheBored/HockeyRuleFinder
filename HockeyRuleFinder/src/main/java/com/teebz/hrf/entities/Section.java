@@ -6,6 +6,7 @@ public class Section {
     private String mNum;
     private String mName;
     private Rule[] mRules;
+    private String mRuleRange; //Derived field, stores text for range of rules ("Rules 41 - 53")
 
     public Section() {
         mSID = null;
@@ -53,5 +54,13 @@ public class Section {
 
     public void setRules(Rule[] rules) {
         this.mRules = rules;
+    }
+
+    public String getRuleRange() {
+        return mRuleRange;
+    }
+
+    public void setRuleRange(String ruleRange) {
+        this.mRuleRange = ruleRange;
     }
 }

@@ -3,6 +3,7 @@ package com.teebz.hrf.searchparsers;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.teebz.hrf.entities.League;
@@ -11,12 +12,15 @@ import com.teebz.hrf.entities.SearchResult;
 import com.teebz.hrf.entities.Section;
 
 import java.io.File;
+import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -90,22 +94,39 @@ public class RuleDataServices {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Section section = cursorToSection(cursor);
-            sections.add(section);
             cursor.moveToNext();
+
+            //We got the section, now run another query to get the rule range.
+            String sql = String.format("SELECT * FROM (SELECT rule_num " +
+                    "                                  FROM rule " +
+                    "                                  WHERE section_id = %d AND parent_rule_id IS NULL " +
+                    "                                  ORDER BY rule_id ASC LIMIT 1) " +
+                    "                   UNION ALL " +
+                    "                   SELECT * FROM (SELECT rule_num " +
+                    "                                  FROM rule " +
+                    "                                  WHERE section_id = %d AND parent_rule_id IS NULL " +
+                    "                                  ORDER BY rule_id DESC LIMIT 1)"
+                    , section.getSID(), section.getSID());
+
+            Cursor subCursor = mDatabase.rawQuery(sql, null);
+            subCursor.moveToFirst();
+            String first = subCursor.getString(0);
+            subCursor.moveToNext();
+            String second = subCursor.getString(0);
+            subCursor.close();
+            if (first.equals("PREFIX")) {
+                section.setRuleRange(String.format("%s - Rule %s", first, second));
+            }
+            else {
+                section.setRuleRange(String.format("Rules %s - %s", first, second));
+            }
+
+            sections.add(section);
         }
         cursor.close();
         dbClose();
 
-        //After the sections have been created, fill them with rules.
-        for (int i = 0; i < sections.size(); i++){
-            Section s = sections.get(i);
-            ArrayList<Rule> rules = getRulesBySectionId(s.getSID());
-            Rule[] ruleArr = new Rule[rules.size()];
-            ruleArr = rules.toArray(ruleArr);
-            s.setRules(ruleArr);
-            sections.set(i, s);
-        }
-
+        //We have the section
         return sections;
     }
 
@@ -356,35 +377,25 @@ public class RuleDataServices {
 
     private ArrayList<Rule> makeTree(ArrayList<Rule> flatRules) {
         //TODO: Performance sucks, improve here.
-        ArrayList<Rule> tree = new ArrayList<Rule>();
 
-        //Get all of the rules that don't have parent ids ("top level" rules)
-        //Iterate in reverse, remove as we find things.
-        for (int i = flatRules.size() - 1; i >= 0; i--) {
-            if (flatRules.get(i).getParent_RID() == null) {
-                tree.add(flatRules.get(i));
-                flatRules.remove(i);
+        //Iterate through all of the rules once and sort them into a HashMap
+        Map<Integer, ArrayList<Rule>> ruleMap = new HashMap<Integer, ArrayList<Rule>>();
+        for (Rule r : flatRules) {
+            //Insert by parent id, 0 if no parent.
+            int insertIndex = r.getParent_RID() != null ? r.getParent_RID() : 0;
+            if (!ruleMap.containsKey(insertIndex)) {
+                ruleMap.put(insertIndex, new ArrayList<Rule>());
             }
+            ruleMap.get(insertIndex).add(r);
         }
-        //Reverse to obtain the original order.
-        Collections.reverse(tree);
 
-        //Now iterate over the top level rules and find our sub rules.
-        for (int k = 0; k < tree.size(); k++) {
-            Rule parent = tree.get(k);
-            ArrayList<Rule> subRules = new ArrayList<Rule>();
-            //Same as above.
-            for (int i = flatRules.size() - 1; i >= 0; i--) {
-                if (flatRules.get(i).getParent_RID().equals(parent.getRID())) {
-                    subRules.add(flatRules.get(i));
-                    flatRules.remove(i);
-                }
-            }
-            Collections.reverse(subRules);
-            //Take the rules we found and assign them to the parent.
-            parent.setSubRules(subRules);
-            //Fix the original list.
-            tree.set(k, parent);
+        //Get the parents, iterate through them and collect the children.
+        ArrayList<Rule> tree = ruleMap.get(0);
+        for (int i = 0; i < tree.size(); i++) {
+            Rule parent = tree.get(i);
+            ArrayList<Rule> children = ruleMap.get(parent.getRID());
+            parent.setSubRules(children);
+            tree.set(i, parent);
         }
 
         return tree;
