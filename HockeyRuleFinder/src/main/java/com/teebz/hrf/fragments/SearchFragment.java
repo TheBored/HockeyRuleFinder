@@ -94,7 +94,7 @@ public class SearchFragment extends android.app.Fragment {
         mEditTextBox = (EditText)fragmentView.findViewById(R.id.txtSearch);
         mListView = (ListView)fragmentView.findViewById(R.id.searchListView);
 
-        //Make sure the edit box gets focus when we load this framgent.
+        //Make sure the edit box gets focus when we load this fragment.
         mEditTextBox.requestFocus();
         mEditTextBox.postDelayed(new Runnable() {
             @Override

@@ -141,7 +141,7 @@ public class RuleDataServices {
         cursor.close();
 
         //Have the section, get the corresponding rules under it.
-        ArrayList<Rule> rules = getRulesBySectionId(s.getSID());
+        ArrayList<Rule> rules = getRules(null, s.getSID(), null, false);
         Rule[] ruleArr = new Rule[rules.size()];
         ruleArr = rules.toArray(ruleArr);
         s.setRules(ruleArr);
@@ -150,13 +150,32 @@ public class RuleDataServices {
         return s;
     }
 
-    public ArrayList<Rule> getRulesBySectionId(int sectionId) {
-        ArrayList<Rule> rules = new ArrayList<Rule>();
+    public ArrayList<Rule> getRules(Integer leagueId, Integer sectionId, int[] ruleIds, Boolean returnFlat) {
+        //Make a where clause that effectively makes each column optional in the search.
+        String whereClause = String.format("league_id=%s AND section_id=%s",
+                leagueId != null ? leagueId.toString() : "league_id",
+                sectionId != null ? sectionId.toString() : "section_id");
+
+        //If we are also searching with specific ruleIds, add onto the query.
+        if (ruleIds != null && ruleIds.length != 0) {
+            //Holy crap Java doesn't have a String.join method. Ooookay.
+            //Going bush league here because it isn't critical code.
+            String ids = "";
+            for (int i = 0; i < ruleIds.length; i++) {
+                ids += Integer.toString(ruleIds[i]);
+                if (i + 1 != ruleIds.length) { //If we aren't at the end
+                    ids += ",";
+                }
+            }
+            whereClause += String.format(" AND (rule_id IN (%s) OR parent_rule_id IN (%s))", ids, ids);
+        }
+
 
         dbOpen();
         Cursor cursor = mDatabase.query(DBHelper.TABLE_RULE,
-                DBHelper.RULE_COLUMNS, "section_id="+sectionId, null, null, null, null);
+                DBHelper.RULE_COLUMNS, whereClause, null, null, null, null);
 
+        ArrayList<Rule> rules = new ArrayList<Rule>();
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Rule rule = cursorToRule(cursor);
@@ -166,19 +185,36 @@ public class RuleDataServices {
         cursor.close();
         dbClose();
 
-        ArrayList<Rule> ruleTree = makeTree(rules);
-
-        return ruleTree;
+        if (returnFlat) {
+            return rules;
+        }
+        else {
+            return makeTree(rules);
+        }
     }
 
-    public Rule getRuleById(int ruleId) {
-        ArrayList<Rule> rules = new ArrayList<Rule>();
+    public Rule getRule(Integer leagueId, Integer ruleId, String ruleNum) {
+        String whereClause = null;
+        //There are essentially two search modes.
+        if (leagueId != null) { //1: Search by league/number.
+            whereClause = String.format("league_id=%s AND rule_num=%s",
+                    leagueId != null ? leagueId.toString() : "league_id",
+                    ruleNum != null ? ruleNum : "rule_num");
+        }
+        else { //2: Search by ID.
+            whereClause = String.format("(rule_id=%s AND parent_rule_id IS NULL) OR parent_rule_id=%s",
+                    //Search for both columns, to give us a rule tree when possible.
+                    ruleId != null ? ruleId.toString() : "rule_id",
+                    ruleId != null ? ruleId.toString() : "parent_rule_id");
+        }
+        //Technically there is a third if no params are set, this should yield all rows.
 
         dbOpen();
-        //Get this rule and any children
-        Cursor cursor = mDatabase.query(DBHelper.TABLE_RULE,
-                DBHelper.RULE_COLUMNS, "rule_id="+ruleId+" OR parent_rule_id="+ruleId, null, null, null, null);
 
+        Cursor cursor = mDatabase.query(DBHelper.TABLE_RULE,
+                DBHelper.RULE_COLUMNS, whereClause, null, null, null, null);
+
+        ArrayList<Rule> rules = new ArrayList<Rule>();
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Rule rule = cursorToRule(cursor);
@@ -187,6 +223,18 @@ public class RuleDataServices {
         }
         cursor.close();
         dbClose();
+
+        //If we only finished with one rule, we need to run again by ID so we can get the entire tree.
+        if (rules.size() == 1) {
+            Rule loneRule = rules.get(0);
+            //It might be a parent rule or a child rule.
+            if (loneRule.getParent_RID() != null) { //Child
+                return getRule(null, loneRule.getParent_RID(), null);
+            }
+            else { //Parent
+                return getRule(null, loneRule.getRID(), null);
+            }
+        }
 
         //Normal case, resume building the tree.
         ArrayList<Rule> ruleTree = makeTree(rules);
@@ -200,92 +248,70 @@ public class RuleDataServices {
         }
     }
 
-    public Rule getRuleByNum(String ruleNum, int leagueId) {
-        ArrayList<Rule> rules = new ArrayList<Rule>();
+    private ArrayList<Rule> findRulesWithText(Integer leagueId, String text) {
+        String whereClause = String.format("league_id=%s AND (text LIKE '%%%s%%' OR rule_name LIKE '%%%s%%')",
+                leagueId != null ? leagueId.toString() : "league_id",
+                text,
+                text);
 
         dbOpen();
-        //Get this rule, can't get children w/o proper id.
         Cursor cursor = mDatabase.query(DBHelper.TABLE_RULE,
-                DBHelper.RULE_COLUMNS, "rule_num="+ruleNum+" AND league_id="+leagueId, null, null, null, null);
+                DBHelper.RULE_COLUMNS, whereClause, null, null, null, null);
 
-        cursor.moveToFirst();
-        Rule rule = cursorToRule(cursor);
-        cursor.close();
-        dbClose();
-
-        //Let the real method build the rule & children.
-        return getRuleById(rule.getRID());
-    }
-
-    public Rule getParentRuleByNum(String ruleNum, int leagueId) {
         ArrayList<Rule> rules = new ArrayList<Rule>();
-
-        dbOpen();
-        //Get this rule, can't get children w/o proper id.
-        Cursor cursor = mDatabase.query(DBHelper.TABLE_RULE,
-                DBHelper.RULE_COLUMNS, "rule_num="+ruleNum+" AND league_id="+leagueId, null, null, null, null);
-
         cursor.moveToFirst();
-        Rule rule = cursorToRule(cursor);
-        cursor.close();
-        dbClose();
-
-        //Let the real method build the rule & children.
-        if (rule.getParent_RID() == null) {
-            return getRuleById(rule.getRID());
-        } else {
-            return getRuleById(rule.getParent_RID());
+        while (!cursor.isAfterLast()) {
+            Rule rule = cursorToRule(cursor);
+            rules.add(rule);
+            cursor.moveToNext();
         }
-    }
-
-    public Rule getParentRuleForId(int ruleId) {
-        dbOpen();
-        //Get the rule indicated
-        Cursor cursor = mDatabase.query(DBHelper.TABLE_RULE,
-                DBHelper.RULE_COLUMNS, "rule_id="+ruleId, null, null, null, null);
-
-        cursor.moveToFirst();
-        Rule rule = cursorToRule(cursor);
         cursor.close();
         dbClose();
 
-        //Return the entire parent rule.
-        return getRuleById(rule.getParent_RID());
+        //Always return flat result.
+        return rules;
     }
 
     public List<SearchResult> searchRules(String text, int leagueId) {
-        //TODO: Database search? Is that possible?
         List<SearchResult> results = new ArrayList<SearchResult>();
-
-        ArrayList<Section> sections = getAllSections(leagueId);
-
         if (text.isEmpty()) {
             return results; //No search text = no results.
         }
 
+        //First up, find any rules that might have the text we are interested in.
+        ArrayList<Rule> directReferences = findRulesWithText(leagueId, text);
 
-        for (Section s : sections) {
-            for (Rule parent : s.getRules()) {
-                boolean isTitleMatch = false;
-                ArrayList<String> contentFound = new ArrayList<String>();
-                if (parent.getName().toLowerCase().contains(text.toLowerCase())) {
+        //Next thing, get all of the parent RuleIds that we are interested in.
+        int[] ruleIds = new int[directReferences.size()];
+        for (int i = 0; i < directReferences.size(); i++) {
+            Rule r = directReferences.get(i);
+            ruleIds[i] = r.getParent_RID() == null ? r.getRID() : r.getParent_RID();
+        }
+
+        //With these Ids, go back to the database and get all of those rules again with any parents
+        //that aren't already in the list. Also puts them into a tree.
+        ArrayList<Rule> possibleReferences = getRules(leagueId, null, ruleIds, false);
+
+        for (Rule parent : possibleReferences) {
+            boolean isTitleMatch = false;
+            ArrayList<String> contentFound = new ArrayList<String>();
+            if (parent.getName().toLowerCase().contains(text.toLowerCase())) {
+                isTitleMatch = true;
+            }
+            for (Rule child : parent.getSubRules()) {
+                if (text.trim().toLowerCase().equals(parent.getNum()) ||
+                        text.trim().toLowerCase().equals(child.getNum())) {
                     isTitleMatch = true;
                 }
-                for (Rule child : parent.getSubRules()) {
-                    if (text.trim().toLowerCase().equals(parent.getNum()) ||
-                            text.trim().toLowerCase().equals(child.getNum())) {
-                        isTitleMatch = true;
-                    }
-                    for (String par : child.getSearchContents()) {
-                        if (par.toLowerCase().contains(text.toLowerCase())) {
-                            contentFound.add(par);
-                        }
+                for (String par : child.getSearchContents()) {
+                    if (par.toLowerCase().contains(text.toLowerCase())) {
+                        contentFound.add(par);
                     }
                 }
+            }
 
-                if (isTitleMatch || contentFound.size() > 0) {
-                    results.add(getResult(parent, text, contentFound));
-                }
+            if (isTitleMatch || contentFound.size() > 0) {
+                results.add(getResult(parent, text, contentFound));
             }
         }
 

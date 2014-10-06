@@ -48,11 +48,20 @@ public class RuleDetailActivity extends HRFActivity {
 
             //We don't know if this rule is a "parent" rule or not. The rule detail fragment shows
             //parent rules only (always shows children) so we need to find out which one we have.
-            //Get the exact rule
-            mRule = mRuleDataServices.getRuleByNum(ruleNum, getLeagueId());
-            ruleTarget = mRule.getRID();//Mark this rule as our target - makes the resulting view auto scroll to the link.
-            if (mRule.getSubRules() == null || mRule.getSubRules().size() == 0){ //We don't have children, go get our parent.
-                mRule = mRuleDataServices.getParentRuleByNum(ruleNum, getLeagueId());
+            //Get the rule and its children.
+            mRule = mRuleDataServices.getRule(getLeagueId(), null, ruleNum);
+
+            if (!mRule.getNum().equals(ruleNum)) {
+                //If the rule we got back doesn't match the target (we got a parent back)
+                //then look through the children to find our target.
+                for (Rule child : mRule.getSubRules()) {
+                    if (child.getNum().equals(ruleNum)) {
+                        ruleTarget = child.getRID();
+                    }
+                }
+            }
+            else {
+                ruleTarget = mRule.getRID();
             }
         }
 

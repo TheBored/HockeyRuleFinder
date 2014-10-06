@@ -36,7 +36,7 @@ public class RuleListActivity extends HRFActivity {
                 sectionId = extras.getInt(RuleListActivity.RULES_LIST_KEY);
             }
             mSection = mRuleDataServices.getSectionById(sectionId);
-            mRules = mRuleDataServices.getRulesBySectionId(sectionId);
+            mRules = mRuleDataServices.getRules(null, sectionId, null, false);
         }
 
         if (savedInstanceState != null) {

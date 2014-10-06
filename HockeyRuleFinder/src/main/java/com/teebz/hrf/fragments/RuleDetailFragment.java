@@ -44,7 +44,7 @@ public class RuleDetailFragment extends android.app.Fragment {
             int ruleId = savedInstanceState.getInt("RuleId");
 
             RuleDataServices ruleDataServices = RuleDataServices.getRuleDataServices(getActivity().getBaseContext());
-            mRule = ruleDataServices.getRuleById(ruleId);
+            mRule = ruleDataServices.getRule(null, ruleId, null);
         }
         // retain this fragment
         setRetainInstance(true);

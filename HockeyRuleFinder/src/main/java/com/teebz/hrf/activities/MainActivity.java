@@ -111,7 +111,7 @@ public class MainActivity extends HRFActivity
     @Override
     public void onQuickRefListItemClick(View view, int position, String ruleNum) {
         //Quick ref links by rule num, can't supply an ID.
-        Rule clickedRule = mRuleDataServices.getRuleByNum(ruleNum, getLeagueId());
+        Rule clickedRule = mRuleDataServices.getRule(getLeagueId(), null, ruleNum);
         Intent newActivity = new Intent(view.getContext(), RuleDetailActivity.class);
         newActivity.putExtra(RuleDetailFragment.RULES_DETAIL_KEY, clickedRule);
         startActivity(newActivity);
@@ -120,7 +120,7 @@ public class MainActivity extends HRFActivity
     @Override
     public void onSearchListItemClick(View view, int position, int ruleId, String highlightText) {
         Intent newActivity = new Intent(this, RuleDetailActivity.class);
-        newActivity.putExtra(RuleDetailFragment.RULES_DETAIL_KEY, mRuleDataServices.getRuleById(ruleId));
+        newActivity.putExtra(RuleDetailFragment.RULES_DETAIL_KEY, mRuleDataServices.getRule(null, ruleId, null));
         newActivity.putExtra(RuleDetailFragment.RULES_DETAIL_SEARCH_TERM, highlightText);
         startActivity(newActivity);
     }
