@@ -25,7 +25,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RuleDataServices {
-    public static final int SEARCH_BUFFER_SPACE = 45; //Number of characters to buffer around search text
     private static RuleDataServices sRuleDataServices;
     private DBHelper mDbHelper;
     private SQLiteDatabase mDatabase;
@@ -130,7 +129,7 @@ public class RuleDataServices {
         return sections;
     }
 
-    public Section getSectionById (int sectionId) {
+    public Section getSectionById (int sectionId, Boolean includeRules) {
         dbOpen();
         Cursor cursor = mDatabase.query(DBHelper.TABLE_SECTION,
                 DBHelper.SECTION_COLUMNS, "section_id="+sectionId, null, null, null, null);
@@ -140,11 +139,13 @@ public class RuleDataServices {
         Section s = cursorToSection(cursor);
         cursor.close();
 
-        //Have the section, get the corresponding rules under it.
-        ArrayList<Rule> rules = getRules(null, s.getSID(), null, false);
-        Rule[] ruleArr = new Rule[rules.size()];
-        ruleArr = rules.toArray(ruleArr);
-        s.setRules(ruleArr);
+        if (includeRules) {
+            //Have the section, get the corresponding rules under it.
+            ArrayList<Rule> rules = getRules(null, s.getSID(), null, false);
+            Rule[] ruleArr = new Rule[rules.size()];
+            ruleArr = rules.toArray(ruleArr);
+            s.setRules(ruleArr);
+        }
 
         dbClose();
         return s;
@@ -248,111 +249,28 @@ public class RuleDataServices {
         }
     }
 
-    private ArrayList<Rule> findRulesWithText(Integer leagueId, String text) {
+    public int[] findRulesWithText(Integer leagueId, String text) {
+        String[] justIdCol = { "rule_id", "parent_rule_id" };
         String whereClause = String.format("league_id=%s AND (text LIKE '%%%s%%' OR rule_name LIKE '%%%s%%')",
                 leagueId != null ? leagueId.toString() : "league_id",
                 text,
                 text);
 
         dbOpen();
-        Cursor cursor = mDatabase.query(DBHelper.TABLE_RULE,
-                DBHelper.RULE_COLUMNS, whereClause, null, null, null, null);
-
-        ArrayList<Rule> rules = new ArrayList<Rule>();
+        Cursor cursor = mDatabase.query(true, DBHelper.TABLE_RULE,
+                justIdCol, whereClause, null, null, null, null, null);
         cursor.moveToFirst();
+
+        int[] ids = new int[cursor.getCount()];
+        int i = 0;
         while (!cursor.isAfterLast()) {
-            Rule rule = cursorToRule(cursor);
-            rules.add(rule);
+            ids[i++] = cursor.isNull(1) ? cursor.getInt(0) : cursor.getInt(1); //Is parent id null? If so, use rule id.
             cursor.moveToNext();
         }
         cursor.close();
         dbClose();
 
-        //Always return flat result.
-        return rules;
-    }
-
-    public List<SearchResult> searchRules(String text, int leagueId) {
-        List<SearchResult> results = new ArrayList<SearchResult>();
-        if (text.isEmpty()) {
-            return results; //No search text = no results.
-        }
-
-        //First up, find any rules that might have the text we are interested in.
-        ArrayList<Rule> directReferences = findRulesWithText(leagueId, text);
-
-        //Next thing, get all of the parent RuleIds that we are interested in.
-        int[] ruleIds = new int[directReferences.size()];
-        for (int i = 0; i < directReferences.size(); i++) {
-            Rule r = directReferences.get(i);
-            ruleIds[i] = r.getParent_RID() == null ? r.getRID() : r.getParent_RID();
-        }
-
-        //With these Ids, go back to the database and get all of those rules again with any parents
-        //that aren't already in the list. Also puts them into a tree.
-        ArrayList<Rule> possibleReferences = getRules(leagueId, null, ruleIds, false);
-
-        for (Rule parent : possibleReferences) {
-            boolean isTitleMatch = false;
-            ArrayList<String> contentFound = new ArrayList<String>();
-            if (parent.getName().toLowerCase().contains(text.toLowerCase())) {
-                isTitleMatch = true;
-            }
-            for (Rule child : parent.getSubRules()) {
-                if (text.trim().toLowerCase().equals(parent.getNum()) ||
-                        text.trim().toLowerCase().equals(child.getNum())) {
-                    isTitleMatch = true;
-                }
-                for (String par : child.getSearchContents()) {
-                    if (par.toLowerCase().contains(text.toLowerCase())) {
-                        contentFound.add(par);
-                    }
-                }
-            }
-
-            if (isTitleMatch || contentFound.size() > 0) {
-                results.add(getResult(parent, text, contentFound));
-            }
-        }
-
-        //Lastly, sort ze list.
-        Collections.sort(results, new Comparator<SearchResult>(){
-            public int compare(SearchResult sr1, SearchResult sr2){
-                if(sr1.countFound == sr2.countFound)
-                    return 0;
-                return sr1.countFound < sr2.countFound ? 1 : -1;
-            }
-        });
-        return results;
-    }
-
-    public static String getHighlightedText(String input, String highlightText, boolean cutDownToSize) {
-        if (highlightText == null || highlightText.isEmpty())
-            return input; //Nothing to highlight, just return.
-
-        String response = input;
-
-        if (cutDownToSize) {
-            //If we need to cut from the start.
-            int start = response.toLowerCase().indexOf(highlightText.toLowerCase());
-            if (start > SEARCH_BUFFER_SPACE) {
-                String sub = response.substring(start - SEARCH_BUFFER_SPACE);
-                response = "..." + sub;
-            }
-            //If we need to cut from the end
-            int end = start + highlightText.length();
-            if (response.length() - end > SEARCH_BUFFER_SPACE + 3) { //3 periods before text
-                String sub = response.substring(0, end + SEARCH_BUFFER_SPACE);
-                response = sub + "...";
-            }
-        }
-
-        Pattern p = Pattern.compile("(?i)" + highlightText);
-        Matcher m = p.matcher(response);
-        while(m.find()){
-            response = response.replaceFirst(m.group(), "<b><font color=\"Red\">" + m.group() + "</font></b>");
-        }
-        return response;
+        return ids;
     }
     //endregion
 
@@ -425,23 +343,6 @@ public class RuleDataServices {
         }
 
         return tree;
-    }
-
-    private SearchResult getResult (Rule r, String searchText, ArrayList<String> textFound) {
-        String highlightText = "";
-        Section section = getSectionById(r.getSID());
-        if (textFound.size() == 0) {
-            highlightText = "No contents";
-        }
-        else {
-            //We need to find what to highlight. Find the first time the text is used in a paragraph.
-            for (String par : textFound) {
-                String temp = getHighlightedText(par, searchText, true);
-                highlightText = highlightText + temp + "<br />";
-            }
-        }
-
-        return new SearchResult(r, section, textFound.size(), highlightText);
     }
     //endregion
 

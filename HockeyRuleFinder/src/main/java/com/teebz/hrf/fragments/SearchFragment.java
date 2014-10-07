@@ -5,6 +5,7 @@ import com.teebz.hrf.activities.HRFActivity;
 import com.teebz.hrf.entities.SearchResult;
 import com.teebz.hrf.listeners.SearchListItemClickListener;
 import com.teebz.hrf.searchparsers.RuleDataServices;
+import com.teebz.hrf.searchparsers.RuleSearcher;
 
 import android.app.Activity;
 import android.content.Context;
@@ -32,6 +33,7 @@ public class SearchFragment extends android.app.Fragment {
 
     private List<SearchResult> mResults;
     private RuleDataServices mRuleDataServices;
+    private RuleSearcher mRuleSearcher;
     private SearchListItemClickListener mItemClickListener;
     private EditText mEditTextBox;
     private ListView mListView;
@@ -91,6 +93,7 @@ public class SearchFragment extends android.app.Fragment {
         View fragmentView = inflater.inflate(R.layout.search_fragment, container, false);
 
         mRuleDataServices = RuleDataServices.getRuleDataServices(fragmentView.getContext());
+        mRuleSearcher = new RuleSearcher(mRuleDataServices);
         mEditTextBox = (EditText)fragmentView.findViewById(R.id.txtSearch);
         mListView = (ListView)fragmentView.findViewById(R.id.searchListView);
 
@@ -170,7 +173,7 @@ public class SearchFragment extends android.app.Fragment {
 
     private void updateSearchResults() {
         HRFActivity parentActivity = (HRFActivity)getActivity();
-        mResults = mRuleDataServices.searchRules(getSearchTerm(), parentActivity.getLeagueId());
+        mResults = mRuleSearcher.searchRules(getSearchTerm(), parentActivity.getLeagueId());
         View rootView = mEditTextBox.getRootView();
         populateListView(rootView);
     }
@@ -183,27 +186,40 @@ public class SearchFragment extends android.app.Fragment {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View itemView = convertView;
+            SearchViewHolder viewHolder = new SearchViewHolder();
             if (itemView == null) {
                 itemView = getActivity().getLayoutInflater().inflate(R.layout.search_row, parent, false);
+
+                //Reduce the number of times we call findViewById.
+                viewHolder.ruleContents = (TextView)itemView.findViewById(R.id.ruleTextView);
+                viewHolder.ruleId = (TextView)itemView.findViewById(R.id.ruleNumberView);
+                viewHolder.sectionName = (TextView)itemView.findViewById(R.id.ruleSectionView);
+                viewHolder.ruleName = (TextView)itemView.findViewById(R.id.ruleTitleView);
+
+                itemView.setTag(viewHolder);
+            }
+            else {
+                viewHolder = (SearchViewHolder)itemView.getTag();
             }
 
             SearchResult current = mResults.get(position);
 
-            TextView txtRuleContents = (TextView)itemView.findViewById(R.id.ruleTextView);
             //Convert it to display the various HTML tags.
             Spanned htmlContents = Html.fromHtml(current.highlightText);
-            txtRuleContents.setText(htmlContents);
 
-            TextView txtRuleId = (TextView)itemView.findViewById(R.id.ruleNumberView);
-            txtRuleId.setText(current.ruleMatch.getNum());
-
-            TextView txtSectionName = (TextView)itemView.findViewById(R.id.ruleSectionView);
-            txtSectionName.setText(current.sectionMatch.getName());
-
-            TextView txtRuleName = (TextView)itemView.findViewById(R.id.ruleTitleView);
-            txtRuleName.setText(current.ruleMatch.getName());
+            viewHolder.ruleContents.setText(htmlContents);
+            viewHolder.ruleId.setText(current.ruleMatch.getNum());
+            viewHolder.sectionName.setText(current.sectionMatch.getName());
+            viewHolder.ruleName.setText(current.ruleMatch.getName());
 
             return itemView;
         }
+    }
+
+    private static class SearchViewHolder {
+        TextView ruleContents;
+        TextView ruleId;
+        TextView sectionName;
+        TextView ruleName;
     }
 }

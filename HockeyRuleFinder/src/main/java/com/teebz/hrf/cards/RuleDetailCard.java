@@ -4,6 +4,7 @@ import com.teebz.hrf.helpers.ApplicationHelper;
 import com.teebz.hrf.R;
 import com.teebz.hrf.entities.Rule;
 import com.teebz.hrf.searchparsers.RuleDataServices;
+import com.teebz.hrf.searchparsers.RuleSearcher;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -51,7 +52,7 @@ public class RuleDetailCard extends Card {
 
             String p = paragraph;
             if (mHighlightText != null && !mHighlightText.isEmpty()){
-                p = RuleDataServices.getHighlightedText(paragraph, mHighlightText, false);
+                p = RuleSearcher.getHighlightedText(paragraph, mHighlightText, false);
             }
 
             txtContents += p;
