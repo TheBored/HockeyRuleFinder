@@ -9,6 +9,7 @@ import com.teebz.hrf.searchparsers.RuleSearcher;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -26,6 +27,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SearchFragment extends android.app.Fragment {
@@ -38,7 +42,8 @@ public class SearchFragment extends android.app.Fragment {
     private EditText mEditTextBox;
     private ListView mListView;
     private Handler mSearchResultHandler;
-    private String mPreviousSearch = null;
+    private String mPreviousSearch;
+    private BackgroundSearch mBgSearcher;
 
     public static SearchFragment newInstance(String previousSearch) {
         SearchFragment fragment = new SearchFragment();
@@ -58,7 +63,10 @@ public class SearchFragment extends android.app.Fragment {
         this.mPreviousSearch = previousSearch;
     }
 
-    public SearchFragment() { }
+    public SearchFragment() {
+        mPreviousSearch = null;
+        mBgSearcher = null;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,8 +100,10 @@ public class SearchFragment extends android.app.Fragment {
         //Inflate the fragment view
         View fragmentView = inflater.inflate(R.layout.search_fragment, container, false);
 
+        int leagueId = ((HRFActivity)getActivity()).getLeagueId();
+
         mRuleDataServices = RuleDataServices.getRuleDataServices(fragmentView.getContext());
-        mRuleSearcher = new RuleSearcher(mRuleDataServices);
+        mRuleSearcher = new RuleSearcher(mRuleDataServices, leagueId);
         mEditTextBox = (EditText)fragmentView.findViewById(R.id.txtSearch);
         mListView = (ListView)fragmentView.findViewById(R.id.searchListView);
 
@@ -136,7 +146,7 @@ public class SearchFragment extends android.app.Fragment {
         mEditTextBox.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
                 mSearchResultHandler.removeCallbacksAndMessages(null);
-                int duration = 500;
+                int duration = 250;
                 if (getSearchTerm().isEmpty()) {
                     duration = 0; //Empty search goes instant.
                 }
@@ -172,10 +182,16 @@ public class SearchFragment extends android.app.Fragment {
     }
 
     private void updateSearchResults() {
+        //Do we have a searcher already running? If so, cancel it before we instantiate a new one.
+        if (mBgSearcher != null && mBgSearcher.getStatus() != AsyncTask.Status.FINISHED) {
+            mBgSearcher.cancel(true);
+        }
+
         HRFActivity parentActivity = (HRFActivity)getActivity();
-        mResults = mRuleSearcher.searchRules(getSearchTerm(), parentActivity.getLeagueId());
-        View rootView = mEditTextBox.getRootView();
-        populateListView(rootView);
+        int leagueId = parentActivity.getLeagueId();
+
+        mBgSearcher = new BackgroundSearch();
+        mBgSearcher.execute(getSearchTerm(), leagueId);
     }
 
     private class SearchListAdapter extends ArrayAdapter<SearchResult> {
@@ -216,10 +232,38 @@ public class SearchFragment extends android.app.Fragment {
         }
     }
 
-    private static class SearchViewHolder {
+    private class SearchViewHolder {
         TextView ruleContents;
         TextView ruleId;
         TextView sectionName;
         TextView ruleName;
+    }
+
+    private class BackgroundSearch extends AsyncTask<Object, Void, List<SearchResult>> {
+
+        @Override
+        protected List<SearchResult> doInBackground(Object... params) {
+            if (params.length == 2) {
+                return mRuleSearcher.searchRules((String)params[0], (Integer)params[1]);
+            }
+            else {
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(List<SearchResult> result) {
+            //Due to the setup of the search, we can't really stop mid search.
+            //Instead, we can choose to not act upon the search results though.
+            if (!isCancelled()) {
+                mResults = result;
+                populateListView(mEditTextBox.getRootView());
+            }
+        }
+
+        @Override
+        protected void onPreExecute() {
+            //TODO: Show spinner or "Searching..." text.
+        }
     }
 }

@@ -44,19 +44,12 @@ public class RuleDetailCard extends Card {
 
     @Override
     public void setupInnerViewElements(ViewGroup parent, View view) {
-        String txtContents = "";
-        for (String paragraph : mRule.getHtmlContents()) {
-            if (!txtContents.isEmpty()) {
-                txtContents += "<br /><br />";
-            }
+        String txtContents = mRule.getHtmlContents();
 
-            String p = paragraph;
-            if (mHighlightText != null && !mHighlightText.isEmpty()){
-                p = RuleSearcher.getHighlightedText(paragraph, mHighlightText, false);
-            }
-
-            txtContents += p;
+        if (mHighlightText != null && !mHighlightText.isEmpty()){
+            txtContents = RuleSearcher.getHighlightedText(txtContents, mHighlightText);
         }
+
         txtContents += "<br />"; //After we put in all the text, add one more newline for spacing.
 
         //With the links prepared, set the ID and Name fields

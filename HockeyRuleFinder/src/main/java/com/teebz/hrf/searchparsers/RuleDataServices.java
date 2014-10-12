@@ -82,9 +82,6 @@ public class RuleDataServices {
     public ArrayList<Section> getAllSections(int leagueId) {
         ArrayList<Section> sections = new ArrayList<Section>();
 
-        //File file = new File("/data/data/com.teebz.hrf/databases/rules.sqlite");
-        //boolean test = file.exists();
-
         dbOpen();
         Cursor cursor = mDatabase.query(DBHelper.TABLE_SECTION,
                 DBHelper.SECTION_COLUMNS, "league_id="+leagueId, null, null, null, null);
@@ -251,8 +248,9 @@ public class RuleDataServices {
 
     public int[] findRulesWithText(Integer leagueId, String text) {
         String[] justIdCol = { "rule_id", "parent_rule_id" };
-        String whereClause = String.format("league_id=%s AND (text LIKE '%%%s%%' OR rule_name LIKE '%%%s%%')",
+        String whereClause = String.format("league_id=%s AND (text LIKE '%%%s%%' OR rule_name LIKE '%%%s%%' OR rule_num LIKE '%%%s%%')",
                 leagueId != null ? leagueId.toString() : "league_id",
+                text,
                 text,
                 text);
 
@@ -315,7 +313,7 @@ public class RuleDataServices {
         }
         r.setNum(cursor.getString(3));
         r.setName(cursor.getString(4));
-        r.setPureContents(Arrays.asList(cursor.getString(5).split("\n")));
+        r.setPureContents(cursor.getString(5));
         return r;
     }
 

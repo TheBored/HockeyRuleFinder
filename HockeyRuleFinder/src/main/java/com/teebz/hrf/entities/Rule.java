@@ -14,9 +14,9 @@ public class Rule implements Serializable {
     private String mNum;
     private String mName;
 
-    private List<String> mPureContents;
-    private List<String> mSearchContents;
-    private List<String> mHtmlContents;
+    private String mPureContents;
+    private String mSearchContents;
+    private String mHtmlContents;
 
     private List<Rule> mSubRules;
     private String mImgName;
@@ -76,11 +76,11 @@ public class Rule implements Serializable {
         this.mName = name;
     }
 
-    public List<String> getPureContents() {
+    public String getPureContents() {
         return mPureContents;
     }
 
-    public void setPureContents(List<String> pureContents) {
+    public void setPureContents(String pureContents) {
         this.mPureContents = pureContents;
 
         //When we set the pure (raw) contents, we also want to generate the search and HTML contents.
@@ -88,11 +88,11 @@ public class Rule implements Serializable {
         mHtmlContents = plainToHTML(pureContents);
     }
 
-    public List<String> getSearchContents() {
+    public String getSearchContents() {
         return mSearchContents;
     }
 
-    public List<String> getHtmlContents() {
+    public String getHtmlContents() {
         return mHtmlContents;
     }
 
@@ -114,51 +114,37 @@ public class Rule implements Serializable {
     //endregion
 
     //region Private Helper Methods
-    private List<String> plainToSearchable(List<String> paragraphs) {
-        List<String> response = new ArrayList<String>();
-        for (String s : paragraphs) {
-            response.add(s);
-        }
+    private String plainToSearchable(String paragraphs) {
+        //Remove all tags, just leave the text that should be searchable
+        String linkPattern = "(\\[link=)(.{1,5})(\\])(.{1,5})(\\[/link\\])";
+        paragraphs = paragraphs.replaceAll(linkPattern, "$4");
+        //Remove the image tag here, need to test before/after
+        String imagePattern = "(\\[image\\])(.*)(\\[/image\\])";
+        paragraphs = paragraphs.replaceAll(imagePattern, "");
 
-        for (int i = 0; i < response.size(); i++) {
-            String par = response.get(i);
-            //Remove all tags, just leave the text that should be searchable
-            String linkPattern = "(\\[link=)(.{1,5})(\\])(.{1,5})(\\[/link\\])";
-            par = par.replaceAll(linkPattern, "$4");
-            //Remove the image tag here, need to test before/after
-            String imagePattern = "(\\[image\\])(.*)(\\[/image\\])";
-            par = par.replaceAll(imagePattern, "");
-            //Place back in list
-            response.set(i, par);
-        }
-        return response;
+        return paragraphs;
     }
 
-    private List<String> plainToHTML(List<String> paragraphs) {
-        List<String> response = new ArrayList<String>();
-        for (String s : paragraphs) {
-            response.add(s);
+    private String plainToHTML(String paragraphs) {
+        //Insert the links used to direct users to related rules.
+        String pattern = "(\\[link=)(.{1,5})(\\])(.{1,5})(\\[/link\\])";
+        paragraphs = paragraphs.replaceAll(pattern, "<a href=\"com.teebz.hrf://$2\">$4</a>");
+
+        //Lines that begin with roman numerals in parens (e.g. "(i)" or "(iv)") have italics wrapped around them.
+        Pattern startPattern = Pattern.compile("^\\([xiv]*\\)(.*)$", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
+        Matcher startMatch = startPattern.matcher(paragraphs);
+        StringBuffer sbStart = new StringBuffer();
+        while (startMatch.find()) {
+            //If we found enough text in group 2, replace out group 1.
+            startMatch.appendReplacement(sbStart, "<i>$0</i>");
         }
+        startMatch.appendTail(sbStart);
+        paragraphs = sbStart.toString();
 
-        for (int i = 0; i < response.size(); i++) {
-            String par = response.get(i);
+        //Swap newline formats.
+        paragraphs = paragraphs.replace("\n", "<br /><br />");
 
-            String pattern = "(\\[link=)(.{1,5})(\\])(.{1,5})(\\[/link\\])";
-            par = par.replaceAll(pattern, "<a href=\"com.teebz.hrf://$2\">$4</a>");
-
-            //If the paragraph starts with a roman numeral in parens, its a list item.
-            String romanNumPattern = "\\([xiv]*\\)";
-            Pattern compiledPattern = Pattern.compile(romanNumPattern);
-            Matcher matcher = compiledPattern.matcher(par);
-            if(matcher.find() && matcher.start() == 0){ //Found a result AND its at the start
-                //Wrap the paragraph in italics
-                par = "<i>" + par + "</i>";
-            }
-
-            //Place back in list
-            response.set(i, par);
-        }
-        return response;
+        return paragraphs;
     }
     //endregion
 }
