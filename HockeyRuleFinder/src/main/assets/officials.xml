@@ -1,6 +1,17 @@
 <?xml version="1.0" ?>
-<!--suppress CheckTagEmptyBody -->
 <officials>
+	<official>
+		<number>52</number>
+		<name>Shandor Alphonso</name>
+		<league>AHL / NHL</league>
+		<membersince>9/1/2014</membersince>
+		<regseasoncount>1</regseasoncount>
+		<firstregseason>2014-2015</firstregseason>
+		<firstreggame>Florida Panthers @ Buffalo Sabres - 10/17/2014</firstreggame>
+		<playoffcount>0</playoffcount>
+		<firstplayoffseason></firstplayoffseason>
+		<firstplayoffgame> @  - </firstplayoffgame>
+	</official>
 	<official>
 		<number>75</number>
 		<name>Derek Amell</name>
@@ -66,7 +77,7 @@
 		<name>Scott Cherrey</name>
 		<league>NHL</league>
 		<membersince>1/9/2007</membersince>
-		<regseasoncount>389</regseasoncount>
+		<regseasoncount>467</regseasoncount>
 		<firstregseason>2007-08</firstregseason>
 		<firstreggame>Carolina Hurricanes @ Washington Capitals - 10/6/2007</firstreggame>
 		<playoffcount>9</playoffcount>
@@ -182,6 +193,18 @@
 		<firstplayoffgame>Minnesota @ Chicago - 4/18/1990</firstplayoffgame>
 	</official>
 	<official>
+		<number>63</number>
+		<name>Trent Knorr</name>
+		<league>AHL / NHL</league>
+		<membersince>9/1/2012</membersince>
+		<regseasoncount>1</regseasoncount>
+		<firstregseason></firstregseason>
+		<firstreggame>Toronto Maple Leafs @ Minnesota Wild - 11/13/2013</firstreggame>
+		<playoffcount>0</playoffcount>
+		<firstplayoffseason></firstplayoffseason>
+		<firstplayoffgame> @  - </firstplayoffgame>
+	</official>
+	<official>
 		<number>71</number>
 		<name>Brad Kovachik</name>
 		<league>NHL</league>
@@ -222,12 +245,12 @@
 		<name>Matt MacPherson</name>
 		<league>NHL</league>
 		<membersince>9/1/2011</membersince>
-		<regseasoncount>100</regseasoncount>
+		<regseasoncount>175</regseasoncount>
 		<firstregseason>2011</firstregseason>
 		<firstreggame>Florida @ Pittsburgh - 10/11/2011</firstreggame>
-		<playoffcount>0</playoffcount>
-		<firstplayoffseason></firstplayoffseason>
-		<firstplayoffgame> @  - </firstplayoffgame>
+		<playoffcount>4</playoffcount>
+		<firstplayoffseason>2014</firstplayoffseason>
+		<firstplayoffgame>Chicago @ St. Louis - 4/17/2014</firstplayoffgame>
 	</official>
 	<official>
 		<number>90</number>
@@ -426,7 +449,7 @@
 		<name>Darcy Burchell</name>
 		<league>AHL / NHL</league>
 		<membersince>9/1/2011</membersince>
-		<regseasoncount>5</regseasoncount>
+		<regseasoncount>22</regseasoncount>
 		<firstregseason></firstregseason>
 		<firstreggame>Dallas Stars @ Detroit Red Wings - 1/29/2013</firstreggame>
 		<playoffcount>0</playoffcount>
@@ -437,20 +460,20 @@
 		<number>6</number>
 		<name>Francis Charron</name>
 		<league>NHL</league>
-		<membersince>9/1/2008</membersince>
-		<regseasoncount>71</regseasoncount>
-		<firstregseason>2010-2011</firstregseason>
+		<membersince>9/1/2009</membersince>
+		<regseasoncount>175</regseasoncount>
+		<firstregseason>2009-2010</firstregseason>
 		<firstreggame>Columbus Blue Jackets @ St-Louis Blues - 4/5/2010</firstreggame>
-		<playoffcount>0</playoffcount>
-		<firstplayoffseason></firstplayoffseason>
-		<firstplayoffgame> @  - </firstplayoffgame>
+		<playoffcount>4</playoffcount>
+		<firstplayoffseason>2014</firstplayoffseason>
+		<firstplayoffgame>Detroit @ Boston - 4/18/2014</firstplayoffgame>
 	</official>
 	<official>
 		<number>43</number>
 		<name>Tom Chmielewski</name>
 		<league>AHL / NHL</league>
 		<membersince>9/1/2013</membersince>
-		<regseasoncount>0</regseasoncount>
+		<regseasoncount>1</regseasoncount>
 		<firstregseason></firstregseason>
 		<firstreggame> @  - </firstreggame>
 		<playoffcount>0</playoffcount>
@@ -462,7 +485,7 @@
 		<name>Paul Devorski</name>
 		<league>NHL</league>
 		<membersince>9/1/1987</membersince>
-		<regseasoncount>1408</regseasoncount>
+		<regseasoncount>1523</regseasoncount>
 		<firstregseason>1989/1990</firstregseason>
 		<firstreggame>NEW JERSEY @ HARTFORD - 10/14/1989</firstreggame>
 		<playoffcount>191</playoffcount>
@@ -474,11 +497,11 @@
 		<name>Gord Dwyer</name>
 		<league>NHL</league>
 		<membersince>9/1/2003</membersince>
-		<regseasoncount>497</regseasoncount>
+		<regseasoncount>570</regseasoncount>
 		<firstregseason></firstregseason>
 		<firstreggame> @  - </firstreggame>
 		<playoffcount>0</playoffcount>
-		<firstplayoffseason></firstplayoffseason>
+		<firstplayoffseason>2014</firstplayoffseason>
 		<firstplayoffgame> @  - </firstplayoffgame>
 	</official>
 	<official>
@@ -486,7 +509,7 @@
 		<name>Eric Furlatt</name>
 		<league>NHL</league>
 		<membersince>9/1/1998</membersince>
-		<regseasoncount>728</regseasoncount>
+		<regseasoncount>800</regseasoncount>
 		<firstregseason>2001/2002</firstregseason>
 		<firstreggame>PHILADELPHIA @ COLUMBUS - 10/8/2001</firstreggame>
 		<playoffcount>72</playoffcount>
@@ -498,9 +521,9 @@
 		<name>Trevor Hanson</name>
 		<league>AHL / NHL</league>
 		<membersince>9/1/2012</membersince>
-		<regseasoncount>1</regseasoncount>
+		<regseasoncount>8</regseasoncount>
 		<firstregseason></firstregseason>
-		<firstreggame>Calgary Flames @ Dallas Stars - 10/24/2014</firstreggame>
+		<firstreggame>Calgary Flames @ Dallas Stars - 10/24/2013</firstreggame>
 		<playoffcount>0</playoffcount>
 		<firstplayoffseason></firstplayoffseason>
 		<firstplayoffgame> @  - </firstplayoffgame>
@@ -522,7 +545,7 @@
 		<name>Ghislain Hebert</name>
 		<league>NHL</league>
 		<membersince>9/1/2008</membersince>
-		<regseasoncount>145</regseasoncount>
+		<regseasoncount>218</regseasoncount>
 		<firstregseason></firstregseason>
 		<firstreggame>Tampa Bay Lightning @ New York Islanders - 2/3/2009</firstreggame>
 		<playoffcount>0</playoffcount>
@@ -534,7 +557,7 @@
 		<name>Jean Hebert</name>
 		<league>NHL</league>
 		<membersince>9/1/2010</membersince>
-		<regseasoncount>25</regseasoncount>
+		<regseasoncount>98</regseasoncount>
 		<firstregseason>2010-2011</firstregseason>
 		<firstreggame>New-York Islanders @ New-Jersey Devils - 3/30/2011</firstreggame>
 		<playoffcount>0</playoffcount>
@@ -546,7 +569,7 @@
 		<name>Dave Jackson</name>
 		<league>NHL</league>
 		<membersince>9/1/1989</membersince>
-		<regseasoncount>1258</regseasoncount>
+		<regseasoncount>1331</regseasoncount>
 		<firstregseason>1990/1991</firstregseason>
 		<firstreggame>NEW JERSEY @ QUEBEC - 12/22/1990</firstreggame>
 		<playoffcount>66</playoffcount>
@@ -558,7 +581,7 @@
 		<name>Marc Joannette</name>
 		<league>NHL</league>
 		<membersince>9/1/1993</membersince>
-		<regseasoncount>853</regseasoncount>
+		<regseasoncount>926</regseasoncount>
 		<firstregseason>1999/2000</firstregseason>
 		<firstreggame>TAMPA BAY @ BUFFALO - 10/1/1999</firstreggame>
 		<playoffcount>96</playoffcount>
@@ -570,22 +593,10 @@
 		<name>Greg Kimmerly</name>
 		<league>NHL</league>
 		<membersince>9/1/1993</membersince>
-		<regseasoncount>935</regseasoncount>
+		<regseasoncount>1007</regseasoncount>
 		<firstregseason>1996/1997</firstregseason>
 		<firstreggame>BOSTON @ PITTSBURGH - 11/30/1996</firstreggame>
 		<playoffcount>13</playoffcount>
-		<firstplayoffseason></firstplayoffseason>
-		<firstplayoffgame> @  - </firstplayoffgame>
-	</official>
-	<official>
-		<number>44</number>
-		<name>Trent Knorr</name>
-		<league>AHL / NHL</league>
-		<membersince>9/1/2012</membersince>
-		<regseasoncount>1</regseasoncount>
-		<firstregseason></firstregseason>
-		<firstreggame>Toronto Maple Leafs @ Minnesota Wild - 11/13/2013</firstreggame>
-		<playoffcount>0</playoffcount>
 		<firstplayoffseason></firstplayoffseason>
 		<firstplayoffgame> @  - </firstplayoffgame>
 	</official>
@@ -594,7 +605,7 @@
 		<name>Tom Kowal</name>
 		<league>NHL</league>
 		<membersince>9/1/1998</membersince>
-		<regseasoncount>736</regseasoncount>
+		<regseasoncount>809</regseasoncount>
 		<firstregseason>1999/2000</firstregseason>
 		<firstreggame>NEW JERSEY @ CAROLINA - 1/28/2000</firstreggame>
 		<playoffcount>4</playoffcount>
@@ -606,7 +617,7 @@
 		<name>Steve Kozari</name>
 		<league>NHL</league>
 		<membersince>9/1/2003</membersince>
-		<regseasoncount>464</regseasoncount>
+		<regseasoncount>537</regseasoncount>
 		<firstregseason></firstregseason>
 		<firstreggame> @  - </firstreggame>
 		<playoffcount>39</playoffcount>
@@ -618,7 +629,7 @@
 		<name>Dennis LaRue</name>
 		<league>NHL</league>
 		<membersince>9/1/1989</membersince>
-		<regseasoncount>1126</regseasoncount>
+		<regseasoncount>1199</regseasoncount>
 		<firstregseason>1990/1991</firstregseason>
 		<firstreggame>BOSTON @ QUEBEC  - 3/26/1991</firstreggame>
 		<playoffcount>58</playoffcount>
@@ -630,7 +641,7 @@
 		<name>Frederick L'Ecuyer</name>
 		<league>NHL</league>
 		<membersince>9/1/2006</membersince>
-		<regseasoncount>255</regseasoncount>
+		<regseasoncount>328</regseasoncount>
 		<firstregseason>2007</firstregseason>
 		<firstreggame>NY Islanders @ Toronto Maple Leafs - 10/13/2007</firstreggame>
 		<playoffcount>0</playoffcount>
@@ -642,7 +653,7 @@
 		<name>Chris Lee</name>
 		<league>NHL</league>
 		<membersince>9/1/1999</membersince>
-		<regseasoncount>713</regseasoncount>
+		<regseasoncount>785</regseasoncount>
 		<firstregseason>2000/2001</firstregseason>
 		<firstreggame>NEW YORK ISLANDERS @ ATLANTA - 4/2/2001</firstreggame>
 		<playoffcount>33</playoffcount>
@@ -654,7 +665,7 @@
 		<name>Mike Leggo</name>
 		<league>NHL</league>
 		<membersince>9/1/1996</membersince>
-		<regseasoncount>925</regseasoncount>
+		<regseasoncount>998</regseasoncount>
 		<firstregseason>1996/1997</firstregseason>
 		<firstreggame>BOSTON @ WASHINGTON - 4/1/1997</firstreggame>
 		<playoffcount>41</playoffcount>
@@ -666,7 +677,7 @@
 		<name>Mark Lemelin</name>
 		<league>AHL / NHL</league>
 		<membersince>9/1/2011</membersince>
-		<regseasoncount>6</regseasoncount>
+		<regseasoncount>28</regseasoncount>
 		<firstregseason></firstregseason>
 		<firstreggame> @  - </firstreggame>
 		<playoffcount>0</playoffcount>
@@ -678,7 +689,7 @@
 		<name>Dave Lewis</name>
 		<league>AHL / NHL</league>
 		<membersince>9/1/2012</membersince>
-		<regseasoncount>1</regseasoncount>
+		<regseasoncount>7</regseasoncount>
 		<firstregseason></firstregseason>
 		<firstreggame>Vancouver Canucks @ Pittsburgh Penguins - 10/19/2013</firstreggame>
 		<playoffcount>0</playoffcount>
@@ -690,7 +701,7 @@
 		<name>TJ Luxmore</name>
 		<league>AHL / NHL</league>
 		<membersince>9/1/2012</membersince>
-		<regseasoncount>1</regseasoncount>
+		<regseasoncount>2</regseasoncount>
 		<firstregseason></firstregseason>
 		<firstreggame>Nashville Predators @ Detroit Red Wings - 11/19/2013</firstreggame>
 		<playoffcount>0</playoffcount>
@@ -702,7 +713,7 @@
 		<name>Rob Martell</name>
 		<league>NHL</league>
 		<membersince>9/1/1992</membersince>
-		<regseasoncount>813</regseasoncount>
+		<regseasoncount>886</regseasoncount>
 		<firstregseason>1995/1996</firstregseason>
 		<firstreggame>NEW YORK ISLANDERS @ OTTAWA - 4/7/1996</firstreggame>
 		<playoffcount>0</playoffcount>
@@ -714,7 +725,7 @@
 		<name>Wes McCauley</name>
 		<league>NHL</league>
 		<membersince>9/1/2001</membersince>
-		<regseasoncount>587</regseasoncount>
+		<regseasoncount>660</regseasoncount>
 		<firstregseason></firstregseason>
 		<firstreggame>Chicago @ Columbus - 1/20/2007</firstreggame>
 		<playoffcount>43</playoffcount>
@@ -753,6 +764,18 @@
 		<regseasoncount>407</regseasoncount>
 		<firstregseason>2000/2001</firstregseason>
 		<firstreggame>SAN JOSE @ NEW YORK ISLANDERS - 11/11/2000</firstreggame>
+		<playoffcount>0</playoffcount>
+		<firstplayoffseason></firstplayoffseason>
+		<firstplayoffgame> @  - </firstplayoffgame>
+	</official>
+	<official>
+		<number>44</number>
+		<name>Kendrick Nicholson</name>
+		<league>AHL / NHL</league>
+		<membersince>9/1/2014</membersince>
+		<regseasoncount>0</regseasoncount>
+		<firstregseason></firstregseason>
+		<firstreggame> @  - </firstreggame>
 		<playoffcount>0</playoffcount>
 		<firstplayoffseason></firstplayoffseason>
 		<firstplayoffgame> @  - </firstplayoffgame>
@@ -818,6 +841,18 @@
 		<firstplayoffgame>VANCOUVER @ COLORADO - 4/12/2001</firstplayoffgame>
 	</official>
 	<official>
+		<number>48</number>
+		<name>Garrett Rank</name>
+		<league>AHL / NHL</league>
+		<membersince>9/1/2014</membersince>
+		<regseasoncount>0</regseasoncount>
+		<firstregseason></firstregseason>
+		<firstreggame> @  - </firstreggame>
+		<playoffcount>0</playoffcount>
+		<firstplayoffseason></firstplayoffseason>
+		<firstplayoffgame> @  - </firstplayoffgame>
+	</official>
+	<official>
 		<number>37</number>
 		<name>Kyle Rehman</name>
 		<league>NHL</league>
@@ -842,12 +877,12 @@
 		<firstplayoffgame> @  - </firstplayoffgame>
 	</official>
 	<official>
-		<number>48</number>
+		<number>24</number>
 		<name>Graham Skiliter</name>
-		<league>AHL / NHL</league>
+		<league>NHL</league>
 		<membersince>9/1/2011</membersince>
 		<regseasoncount>6</regseasoncount>
-		<firstregseason></firstregseason>
+		<firstregseason>9/1/2014</firstregseason>
 		<firstreggame>Colorado Avalanche @ Edmonton Oilers - 1/28/2013</firstreggame>
 		<playoffcount>0</playoffcount>
 		<firstplayoffseason></firstplayoffseason>
@@ -890,18 +925,6 @@
 		<firstplayoffgame>New Jersey Devils @ Boston Bruins - </firstplayoffgame>
 	</official>
 	<official>
-		<number>21</number>
-		<name>Don VanMassenhoven</name>
-		<league>NHL</league>
-		<membersince>7/15/1992</membersince>
-		<regseasoncount>1209</regseasoncount>
-		<firstregseason>1993/1994</firstregseason>
-		<firstreggame>EDMONTON @ BOSTON - 11/11/1993</firstreggame>
-		<playoffcount>89</playoffcount>
-		<firstplayoffseason>1998/1999</firstplayoffseason>
-		<firstplayoffgame>ANAHEIM @ DETROIT - 4/23/1999</firstplayoffgame>
-	</official>
-	<official>
 		<number>29</number>
 		<name>Ian Walsh</name>
 		<league>NHL</league>
@@ -925,28 +948,4 @@
 		<firstplayoffseason>1999/2000</firstplayoffseason>
 		<firstplayoffgame>PHOENIX @ COLORADO - 4/13/2000</firstplayoffgame>
 	</official>
-    <official>
-        <number>35</number>
-        <name>Reserved</name>
-        <league>X</league>
-        <membersince>X</membersince>
-        <regseasoncount>X</regseasoncount>
-        <firstregseason>X</firstregseason>
-        <firstreggame>X</firstreggame>
-        <playoffcount>X</playoffcount>
-        <firstplayoffseason>X</firstplayoffseason>
-        <firstplayoffgame>X</firstplayoffgame>
-    </official>
-    <official>
-        <number>85</number>
-        <name>Reserved</name>
-        <league>X</league>
-        <membersince>X</membersince>
-        <regseasoncount>X</regseasoncount>
-        <firstregseason>X</firstregseason>
-        <firstreggame>X</firstreggame>
-        <playoffcount>X</playoffcount>
-        <firstplayoffseason>X</firstplayoffseason>
-        <firstplayoffgame>X</firstplayoffgame>
-    </official>
 </officials>
