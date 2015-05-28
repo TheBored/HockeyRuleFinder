@@ -85,7 +85,7 @@ public class SearchFragment extends android.app.Fragment {
         catch (Exception e) {
             Toast.makeText(activity.getBaseContext(), "Click listener failed", Toast.LENGTH_LONG).show();
         }
-        populateListView(activity.findViewById(android.R.id.content).getRootView());
+        populateListView(activity.findViewById(R.id.searchFragment));
     }
 
     @Override
