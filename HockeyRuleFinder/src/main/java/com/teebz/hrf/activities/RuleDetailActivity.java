@@ -92,6 +92,7 @@ public class RuleDetailActivity extends HRFActivity {
             Crashlytics.setInt("RuleTarget", ruleTarget);
             Crashlytics.setString("IntentData", data != null ? data.toString() : "No Intent Data");
             Crashlytics.setString("BundleExtras", extras != null ? "Exists" : "Does not exist");
+            Crashlytics.setString("SavedInstanceState", savedInstanceState != null ? "Exists" : "Does not exist");
             Crashlytics.logException(new Exception("mRule is null during RuleDetailActivity load."));
 
             //App was going to crash, restart back at the main menu. Exception was logged and sent to me though.
