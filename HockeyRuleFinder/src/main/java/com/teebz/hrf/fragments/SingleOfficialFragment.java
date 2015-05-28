@@ -15,6 +15,7 @@ import it.gmariotti.cardslib.library.view.CardView;
 
 public class SingleOfficialFragment extends android.app.Fragment {
     private String mJerseyNumber;
+    private static String OFFICIALS_JERSEY_KEY;
 
     public static SingleOfficialFragment newInstance(String jerseyNumber) {
         SingleOfficialFragment fragment = new SingleOfficialFragment();
@@ -31,8 +32,18 @@ public class SingleOfficialFragment extends android.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // retain this fragment
-        setRetainInstance(true);
+
+        //Coming from saved state.
+        if (mJerseyNumber == null && savedInstanceState != null) {
+            //Something happened that killed our state. Reload!
+            mJerseyNumber = savedInstanceState.getString(SingleOfficialFragment.OFFICIALS_JERSEY_KEY);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(SingleOfficialFragment.OFFICIALS_JERSEY_KEY, mJerseyNumber);
     }
 
     @Override
