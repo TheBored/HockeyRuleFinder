@@ -1,5 +1,6 @@
 package com.teebz.hrf.searchparsers;
 
+import com.crashlytics.android.Crashlytics;
 import com.teebz.hrf.entities.Rule;
 import com.teebz.hrf.entities.SearchResult;
 import com.teebz.hrf.entities.Section;
@@ -97,9 +98,12 @@ public class RuleSearcher {
         if (highlightText == null || highlightText.isEmpty())
             return input; //Nothing to highlight, just return.
 
-        Pattern p = Pattern.compile(highlightText, Pattern.CASE_INSENSITIVE);
-        String response = input.replaceAll("(?i)" + highlightText, "<b><font color=\"Red\">$0</font></b>");
-
+        try {
+            Pattern p = Pattern.compile(highlightText, Pattern.CASE_INSENSITIVE);
+            response = input.replaceAll("(?i)" + highlightText, "<b><font color=\"Red\">$0</font></b>");
+        }
+        catch (Exception e) {
+        }
         return response;
     }
 
