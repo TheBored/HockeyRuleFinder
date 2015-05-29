@@ -92,6 +92,8 @@ public class RuleDetailActivity extends HRFActivity {
             Crashlytics.setInt("RuleTarget", ruleTarget);
             Crashlytics.setString("IntentData", data != null ? data.toString() : "No Intent Data");
             Crashlytics.setString("BundleExtras", extras != null ? "Exists" : "Does not exist");
+            Crashlytics.setBool("RuleInExtras", extras.containsKey(RuleDetailFragment.RULES_DETAIL_KEY));
+            Crashlytics.setBool("HighlightTextInExtras", extras.containsKey(RuleDetailFragment.RULES_DETAIL_SEARCH_TERM));
             Crashlytics.setString("SavedInstanceState", savedInstanceState != null ? "Exists" : "Does not exist");
             Crashlytics.logException(new Exception("mRule is null during RuleDetailActivity load."));
 
