@@ -1,6 +1,5 @@
 package com.teebz.hrf.activities;
 
-import com.crashlytics.android.Crashlytics;
 import com.teebz.hrf.R;
 import com.teebz.hrf.entities.Rule;
 import com.teebz.hrf.fragments.NavigationDrawerFragment;
@@ -64,8 +63,6 @@ public class MainActivity extends HRFActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Crashlytics.start(this);
-
 
         String mSelectedOption = getString(R.string.title_section0);
         if (savedInstanceState != null) {

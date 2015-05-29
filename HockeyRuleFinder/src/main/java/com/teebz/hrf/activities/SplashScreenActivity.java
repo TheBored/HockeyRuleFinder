@@ -1,5 +1,6 @@
 package com.teebz.hrf.activities;
 
+import com.crashlytics.android.Crashlytics;
 import com.teebz.hrf.R;
 
 import android.content.Intent;
@@ -13,6 +14,7 @@ public class SplashScreenActivity extends HRFActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Crashlytics.start(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.splash_main);
 
