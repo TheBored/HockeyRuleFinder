@@ -948,4 +948,28 @@
 		<firstplayoffseason>1999/2000</firstplayoffseason>
 		<firstplayoffgame>PHOENIX @ COLORADO - 4/13/2000</firstplayoffgame>
 	</official>
+    <official>
+        <number>35</number>
+        <name>Reserved</name>
+        <league>X</league>
+        <membersince>X</membersince>
+        <regseasoncount>X</regseasoncount>
+        <firstregseason>X</firstregseason>
+        <firstreggame>X</firstreggame>
+        <playoffcount>X</playoffcount>
+        <firstplayoffseason>X</firstplayoffseason>
+        <firstplayoffgame>X</firstplayoffgame>
+    </official>
+    <official>
+         <number>85</number>
+         <name>Reserved</name>
+         <league>X</league>
+         <membersince>X</membersince>
+         <regseasoncount>X</regseasoncount>
+         <firstregseason>X</firstregseason>
+         <firstreggame>X</firstreggame>
+         <playoffcount>X</playoffcount>
+         <firstplayoffseason>X</firstplayoffseason>
+         <firstplayoffgame>X</firstplayoffgame>
+    </official>
 </officials>
