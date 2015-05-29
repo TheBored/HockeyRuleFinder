@@ -98,11 +98,15 @@ public class RuleSearcher {
         if (highlightText == null || highlightText.isEmpty())
             return input; //Nothing to highlight, just return.
 
+        String response = input;
         try {
             Pattern p = Pattern.compile(highlightText, Pattern.CASE_INSENSITIVE);
             response = input.replaceAll("(?i)" + highlightText, "<b><font color=\"Red\">$0</font></b>");
         }
         catch (Exception e) {
+            Crashlytics.setString("Text", input);
+            Crashlytics.setString("Highlight", highlightText);
+            Crashlytics.logException(e);
         }
         return response;
     }
